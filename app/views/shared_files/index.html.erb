@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shared Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Post</th>
+      <th>File type</th>
+      <th>Path</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shared_files.each do |shared_file| %>
+      <tr>
+        <td><%= shared_file.user %></td>
+        <td><%= shared_file.post %></td>
+        <td><%= shared_file.file_type %></td>
+        <td><%= shared_file.path %></td>
+        <td><%= link_to 'Show', shared_file %></td>
+        <td><%= link_to 'Edit', edit_shared_file_path(shared_file) %></td>
+        <td><%= link_to 'Destroy', shared_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shared File', new_shared_file_path %>

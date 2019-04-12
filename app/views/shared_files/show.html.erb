@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @shared_file.user %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @shared_file.post %>
+</p>
+
+<p>
+  <strong>File type:</strong>
+  <%= @shared_file.file_type %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @shared_file.path %>
+</p>
+
+<%= link_to 'Edit', edit_shared_file_path(@shared_file) %> |
+<%= link_to 'Back', shared_files_path %>

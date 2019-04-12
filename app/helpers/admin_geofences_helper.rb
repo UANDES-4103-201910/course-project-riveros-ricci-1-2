@@ -1,0 +1,2 @@
+module AdminGeofencesHelper
+end

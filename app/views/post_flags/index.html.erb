@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Post Flags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th>Flagged by</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post_flags.each do |post_flag| %>
+      <tr>
+        <td><%= post_flag.post %></td>
+        <td><%= post_flag.flagged_by %></td>
+        <td><%= post_flag.comment %></td>
+        <td><%= link_to 'Show', post_flag %></td>
+        <td><%= link_to 'Edit', edit_post_flag_path(post_flag) %></td>
+        <td><%= link_to 'Destroy', post_flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post Flag', new_post_flag_path %>

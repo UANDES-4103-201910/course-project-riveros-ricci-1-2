@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Shareds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Post</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_shareds.each do |user_shared| %>
+      <tr>
+        <td><%= user_shared.user %></td>
+        <td><%= user_shared.post %></td>
+        <td><%= link_to 'Show', user_shared %></td>
+        <td><%= link_to 'Edit', edit_user_shared_path(user_shared) %></td>
+        <td><%= link_to 'Destroy', user_shared, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Shared', new_user_shared_path %>

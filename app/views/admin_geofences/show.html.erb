@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @admin_geofence.user %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @admin_geofence.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @admin_geofence.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_admin_geofence_path(@admin_geofence) %> |
+<%= link_to 'Back', admin_geofences_path %>
