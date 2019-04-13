@@ -1,4 +1,4 @@
 class Dumpster < ApplicationRecord
   belongs_to :post
-  belongs_to :creator
+  belongs_to :user
 end
