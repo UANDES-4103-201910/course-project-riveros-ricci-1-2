@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :admin_geofences
   has_one :user_profile
 
-  validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 1 }, format: { with: /\A[a-zA-Z0-9]*\z/i }
 end
