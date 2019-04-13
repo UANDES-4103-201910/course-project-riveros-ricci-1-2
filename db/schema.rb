@@ -66,22 +66,25 @@ ActiveRecord::Schema.define(version: 2019_04_12_223546) do
   end
 
   create_table "follow_users", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "follower_user_id"
     t.integer "followed_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_user_id"], name: "index_follow_users_on_followed_user_id"
-    t.index ["user_id"], name: "index_follow_users_on_user_id"
+    t.index ["follower_user_id"], name: "index_follow_users_on_follower_user_id"
+    t.index [nil, nil], name: "index_follow_users_on_follower_user_and_followed_user", unique: true
+    t.index [nil], name: "index_follow_users_on_followed_user"
+    t.index [nil], name: "index_follow_users_on_follower_user"
   end
 
   create_table "post_flags", force: :cascade do |t|
     t.integer "post_id"
-    t.integer "flagged_by_id"
+    t.integer "user_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["flagged_by_id"], name: "index_post_flags_on_flagged_by_id"
     t.index ["post_id"], name: "index_post_flags_on_post_id"
+    t.index ["user_id"], name: "index_post_flags_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
