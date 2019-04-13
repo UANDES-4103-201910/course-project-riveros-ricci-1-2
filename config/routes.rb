@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+  root 'welcome#index'
   resources :post_flags
   resources :admin_geofences
   resources :user_profiles
