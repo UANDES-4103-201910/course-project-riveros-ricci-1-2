@@ -1,44 +1,64 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Is admin:</strong>
-  <%= @user.is_admin %>
-</p>
-
-<p>
-  <strong>Is superadmin:</strong>
-  <%= @user.is_superadmin %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @user.status %>
-</p>
-
-<p>
-  <strong>Last access:</strong>
-  <%= @user.last_access %>
-</p>
-
-<p>
-  <strong>Karma:</strong>
-  <%= @user.karma %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+  <div class="col-8">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="profile-posted-tab" data-toggle="tab"
+           href="#profilePosted" role="tab" aria-controls="profilePosted" aria-selected="true">Posted</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-shared-tab" data-toggle="tab"
+           href="#profileShared" role="tab" aria-controls="profileShared" aria-selected="false">Shared</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-commented-tab" data-toggle="tab"
+           href="#profileCommented" role="tab" aria-controls="profileCommented" aria-selected="false">Commented</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-upvoted-tab" data-toggle="tab"
+           href="#profileUpvoted" role="tab" aria-controls="profileUpvoted" aria-selected="false">Upvoted</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-downvoted-tab" data-toggle="tab"
+           href="#profileDownvoted" role="tab" aria-controls="profileDownvoted" aria-selected="false">Downvoted</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="profilePosted" role="tabpanel" aria-labelledby="profile-posted-tab">
+        ...
+      </div>
+      <div class="tab-pane fade" id="profileShared" role="tabpanel" aria-labelledby="profile-shared-tab">
+        ...
+      </div>
+      <div class="tab-pane fade" id="profileCommented" role="tabpanel" aria-labelledby="profile-commented-tab">
+        ...
+      </div>
+      <div class="tab-pane fade" id="profileUpvoted" role="tabpanel" aria-labelledby="profile-upvoted-tab">
+        ...
+      </div>
+      <div class="tab-pane fade" id="profileDownvoted" role="tabpanel" aria-labelledby="profile-downvoted-tab">
+        ...
+      </div>
+    </div>
+  </div>
+  <%# Profile  %>
+  <div class="col-4">
+    <div class="bg-light rounded text-center">
+      <div class="">
+        <img src="<%= Faker::LoremFlickr.image("200x200") %>" class="img-fluid rounded-circle">
+      </div>
+      <div class="d-inline-block text-primary">
+          <h2><%= Faker::Name.name %></h2>
+      </div>
+      <div class="">
+        <button type="button" class="btn btn-success btn-sm">Follow</button>
+      </div>
+      <div>
+        <h3 class="h3 text-center">Bio</h3>
+        <div class="border border-light">
+          <%= Faker::Lorem.sentence(15) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
