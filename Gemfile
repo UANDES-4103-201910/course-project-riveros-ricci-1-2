@@ -21,6 +21,8 @@ gem 'webpacker'
 gem 'foreman'
 # Use Faker to generate fake users, comments, post titles and content, etc...
 gem 'faker'
+# User octicons_helper to include octicons by github
+gem 'octicons_helper'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
