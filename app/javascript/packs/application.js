@@ -22,8 +22,4 @@ console.log('Hello World from Webpacker');
 // To make jquery available
 window.$ = $;
 
-// To make popper.js work
-$(document).ready(function() {
-    $(".more-options-popover").popover();
-});
 
