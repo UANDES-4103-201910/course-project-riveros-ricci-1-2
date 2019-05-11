@@ -26,3 +26,6 @@
 - [User login](http://localhost:5000/login)
 - [Admin's blacklist](http://localhost:5000/admin/blacklist)
 - [Admin's dumpster](http://localhost:5000/admin/dumpster)
+
+## APIs
+- [Postman collection](https://www.getpostman.com/collections/3a88a40eeb2030b53cd8)
