@@ -19,11 +19,20 @@
     <h3 class="mb-0"><%= Faker::Lorem.sentence(3) %></h3>
     <div class="mb-1 text-muted">May 7</div>
     <p class="card-text mb-auto"><%= Faker::Lorem.sentence(25) %> ...</p>
-    <div class="mb-0">
+    <div class="mb-0 mt-2">
+      <span class='votes text-primary'>1k</span>
+      <span class='text-secondary'>points</span>
+      <span class='comments text-primary'>500</span>
+      <span class='text-secondary'>
+        <a class='text-secondary' href='/post'>comments</a>
+      </span> 
       <%# TODO: make this look nice. Comments should have a link to that post comments anchor %>
-      1k points  500 comments
-      <%= octicon "arrow-up" %>
-      <%= octicon "arrow-down" %>
+      <a href=''>
+        <%= octicon "arrow-up", :height => 24%>
+      </a>
+      <a href=''>
+        <%= octicon("arrow-down", :height => 24, :class => "text-primary")%>
+      </a>
     </div>
 <!--    <a href="#" class="stretched-link">Continue reading</a>-->
   </div>
