@@ -1,0 +1,46 @@
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-2 shadow-sm h-md-250 position-relative">
+  <div class="col p-4 d-flex flex-column position-static">
+    <div class="d-inline-block mb-2 text-primary">
+      <img src="https://www.bh-bims.org/wp-content/uploads/2017/02/profile-placeholder.gif" class="rounded float-left img-fluid img-thumbnail mr-1" width="20" height="20" alt="...">
+      <%= Faker::Name.name %>
+      <div class="float-right dropdown">
+        <a  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= octicon "kebab-horizontal" %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <%# TODO: put images (flag) and corresponding text  %>
+          <a class="dropdown-item" href="#">Flag</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+    </div>
+    <h3 class="mb-0"><%= Faker::Lorem.sentence(3) %></h3>
+    <div class="mb-1 text-muted">May 7</div>
+    <p class="card-text mb-auto"><%= Faker::Lorem.sentence(25) %> ...</p>
+    <div class="mb-0 mt-2">
+      <span class='votes text-primary'>1k</span>
+      <span class='text-secondary'>points</span>
+      <span class='comments text-primary'>500</span>
+      <span class='text-secondary'>
+        <a class='text-secondary' href='/post'>comments</a>
+      </span> 
+      <%# TODO: make this look nice. Comments should have a link to that post comments anchor %>
+      <a href=''>
+        <%= octicon "arrow-up", :height => 24%>
+      </a>
+      <a href=''>
+        <%= octicon("arrow-down", :height => 24, :class => "text-primary")%>
+      </a>
+    </div>
+<!--    <a href="#" class="stretched-link">Continue reading</a>-->
+  </div>
+  <div class="col-auto d-none d-lg-block">
+    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#55595c"></rect>
+      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+    </svg>
+  </div>
+</div>

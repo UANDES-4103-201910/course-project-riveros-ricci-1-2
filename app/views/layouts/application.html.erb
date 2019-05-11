@@ -5,11 +5,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <%= render 'shared/alert_dismissible' %>
+    <% if @current_user.nil? %>
+      <%# If no user is logged in, show a simple navbar with a login link  %>
+      <%= render 'layouts/no_user_navbar' %>
+    <% elsif @current_user.is_admin?  %>
+      <%# else if logged user is admin, show his navbar  %>
+      <%= render 'layouts/admin_navbar' %>
+    <% else %>
+      <%# else if logged user is normal, show his navbar  %>
+      <%= render 'layouts/user_navbar' %>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

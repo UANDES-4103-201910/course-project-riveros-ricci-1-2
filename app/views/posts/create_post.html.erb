@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+	    
+	    <div class="col-md-8">
+	        
+    		<h1>Create post</h1>
+    		
+    		<form action="" method="POST">
+    		    
+    		    <div class="form-group">
+    		        <label for="title">Title</label>
+    		        <input type="text" class="form-control" name="title" />
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <label for="description">Post</label>
+    		        <textarea rows="5" class="form-control" name="description" ></textarea>
+    		    </div>
+    		    
+    		    <div class="import-files mb-3">
+                    <button class='btn btn-primary'>import file</button>
+                    <%= octicon "file-media" %>
+    		    </div>
+    		    
+    		    <div class="form-group">
+    		        <button type="submit" class="btn btn-primary">
+    		            Create
+    		        </button>
+    		        <button class="btn btn-default">
+    		            Cancel
+    		        </button>
+    		    </div>
+    		    
+    		</form>
+		</div>
+
+        <div class='col-md-4 '>
+        <svg class="bd-placeholder-img" with='100%' height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#55595c"></rect>
+      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+    </svg>
+        </div>
+		
+	</div>
+</div>
