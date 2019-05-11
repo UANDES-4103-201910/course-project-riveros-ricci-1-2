@@ -19,14 +19,23 @@
     </div>
     <div class="card-footer">
       <%# TODO: maybe a partial%>
-      1.021 Points. Up Down Flag etc...
+      <span class='votes text-primary'>1.050</span>
+      <span class='text-secondary'>points</span>
+      <span class='comments text-primary'>500</span>
+      <span class='text-secondary'>comments</span> 
+      <a href=''>
+      <%= octicon "arrow-up", :height => 34, :class => 'float-right'%>
+      </a>
+      <a href=''>
+        <%= octicon("arrow-down", :height => 34, :class => "float-right")%>
+      </a>
     </div>
   </div>
 </div>
 <div class="row mt-1">
 <!--  <span class="col-1"></span>-->
   <div class="col-4 card">
-    <a class="card-header" data-toggle="collapse" href="#attachmentCollapse">Attachments</a>
+    <a class="card-header ml-0" data-toggle="collapse" href="#attachmentCollapse">Attachments</a>
     <div class="card-body collapse" id="attachmentCollapse">
       <ul class="inline">
         <li><a href="#">File 1 link</a></li>

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
   get '/post', to: 'welcome#post' # Temporal, in future specify post id
+
+  get '/post/create_post', to: 'posts#create_post'
   resources :post_flags
   resources :admin_geofences
   resources :user_profiles
