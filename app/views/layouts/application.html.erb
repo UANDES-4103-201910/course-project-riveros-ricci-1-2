@@ -12,6 +12,7 @@
   </head>
 
   <body>
+  <%= render 'shared/alert_dismissible' %>
     <% if @current_user.nil? %>
       <%# If no user is logged in, show a simple navbar with a login link  %>
       <%= render 'layouts/no_user_navbar' %>

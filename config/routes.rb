@@ -19,5 +19,10 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts
   resources :users
+  get '/signup', to: 'users#new'
+  get '/login', to: 'welcome#login' # TODO: to sessions#new
+  get '/admin', to: 'admin#page'
+  get '/admin/blacklist', to: 'admin#blacklist'
+  get '/admin/dumpster', to: 'dumpsters#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

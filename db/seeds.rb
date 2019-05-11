@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Minimum to create users
+UserStatus.new(name: 'Active', comment: 'User is active').save
+User.new(username: 'Admin', email: 'admin@sapo.com', password: '123456',
+         is_admin: true, is_superadmin: true, user_status_id: 1, karma: 0).save
