@@ -23,4 +23,6 @@
 - [Post and comments](http://localhost:5000/post)
 - [User profile](http://localhost:5000/users/1)
 - [User signup](http://localhost:5000/signup)
+- [User login](http://localhost:5000/login)
 - [Admin's blacklist](http://localhost:5000/admin/blacklist)
+- [Admin's dumpster](http://localhost:5000/admin/dumpster)
