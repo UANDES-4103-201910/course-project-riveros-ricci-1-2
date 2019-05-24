@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   get 'welcome/index'
   root 'welcome#index'
   get '/post', to: 'welcome#post' # Temporal, in future specify post id
