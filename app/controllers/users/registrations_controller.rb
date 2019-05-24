@@ -10,14 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super do |resource|
-      if resource.id.nil?
-        resource.user_status_id = 1
-        resource.save
-      end
-    end
-  end
+  # def create
+  #   super do |resource|
+  #     if resource.id.nil?
+  #       resource.user_status_id = 1
+  #       resource.save
+  #     end
+  #   end
+  # end
 
   # GET /resource/edit
   # def edit

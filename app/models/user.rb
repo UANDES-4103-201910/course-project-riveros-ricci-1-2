@@ -23,4 +23,16 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 1 }, format: { with: /\A[a-zA-Z0-9]*\z/i }
+
+  before_validation :load_defaults
+
+  def load_defaults
+    if self.new_record?
+      self.user_status_id ||= 1
+      self.karma = 0
+      self.is_admin ||= false
+      self.is_superadmin ||= false
+    end
+  end
+
 end
