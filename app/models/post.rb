@@ -10,4 +10,21 @@ class Post < ApplicationRecord
 
   validates :user_id, presence: true
   validates :description, presence: true
+
+  before_validation :load_defaults, on: :create
+  after_create :creator_upvote
+
+
+  def load_defaults
+    self.is_resolved ||= false
+    self.is_open ||= true
+  end
+
+  def creator_upvote
+    Vote.create(
+      user_id: user_id,
+      post_id: id,
+      value: 1
+    )
+  end
 end
