@@ -8,5 +8,5 @@
 
 # Minimum to create users
 UserStatus.new(name: 'Active', comment: 'User is active').save
-User.new(username: 'Admin', email: 'admin@sapo.com', password: '123456',
+User.new(username: 'Admin', email: 'admin@admin.com', password: '123456',
          is_admin: true, is_superadmin: true, user_status_id: 1, karma: 0).save
