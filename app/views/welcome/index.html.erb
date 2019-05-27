@@ -1,4 +1,2 @@
 <%# TODO: main site. %>
-<% 5.times do |x| %>
-  <%= render 'posts/small_post' %>
-<% end %>
+<%= render partial: 'posts/small_post', collection: @posts, as: :post %>

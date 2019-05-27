@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  get 'welcome/index'
-  root 'welcome#index'
-  get '/post', to: 'welcome#post' # Temporal, in future specify post id
+  get 'posts/index'
+  root 'posts#index'
+  # get '/post', to: 'welcome#post' # Temporal, in future specify post id
 
   get '/post/create_post', to: 'posts#create_post'
   resources :post_flags

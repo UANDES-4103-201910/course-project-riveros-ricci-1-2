@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page], per_page: 8)
   end
 
   # GET /posts/1
@@ -69,6 +69,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :decription, :is_resolved, :content, :location_latitude, :location_longitude, :city, :country, :is_open)
+      params.require(:post).permit(:user_id, :description, :is_resolved, :content, :location_latitude, :location_longitude, :city, :country, :is_open)
     end
 end

@@ -27,4 +27,16 @@ class Post < ApplicationRecord
       value: 1
     )
   end
+
+  def score
+    votes.sum(:value)
+  end
+
+  def upvotes
+    votes.select{ |vote| vote.value >= 1 }.count
+  end
+
+  def downvotes
+    votes.select{ |vote| vote.value <= -1 }.count
+  end
 end
