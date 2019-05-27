@@ -38,7 +38,7 @@ posts.each do |p|
     user = normal_users[rand(normal_users.length)]
     p.comments.create(
       user_id: user.id,
-      content: Faker::TwinPeaks.quote.to_s
+      content: Faker::TvShows::TwinPeaks.quote.to_s
     )
   end
 end
