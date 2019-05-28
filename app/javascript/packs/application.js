@@ -22,4 +22,6 @@ console.log('Hello World from Webpacker');
 // To make jquery available
 window.$ = $;
 
-
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})

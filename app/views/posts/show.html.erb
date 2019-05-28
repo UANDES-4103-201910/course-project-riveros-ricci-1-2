@@ -1,49 +1,68 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
-  <strong>Is resolved:</strong>
-  <%= @post.is_resolved %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>Location latitude:</strong>
-  <%= @post.location_latitude %>
-</p>
-
-<p>
-  <strong>Location longitude:</strong>
-  <%= @post.location_longitude %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @post.city %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @post.country %>
-</p>
-
-<p>
-  <strong>Is open:</strong>
-  <%= @post.is_open %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%# Post %>
+<div class="row">
+  <div class="card" style="width: auto;">
+    <div class="card-header">
+      <%= render partial: 'shared/user_and_picture', locals: {user: @post.user} %>
+      <%= render partial: 'shared/date_ago', locals: {html_class: 'text-muted float-right', date: @post.created_at} %>
+    </div>
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#868e96"></rect>
+      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image placeholder</text>
+    </svg>
+    <div class="card-body">
+      <h5 class="card-title"><%= @post.description %></h5>
+      <div class="card-text">
+        <%= @post.content %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%# TODO: maybe a partial%>
+      <span class='votes text-primary'><%= @post.score %></span>
+      <span class='text-secondary'>points</span>
+      <span class='comments text-primary'><%= @post.comments.count %></span>
+      <span class='text-secondary'>comments</span>
+      <a href=''>
+        <%= octicon "arrow-up", :height => 34, :class => 'float-right'%>
+      </a>
+      <a href=''>
+        <%= octicon("arrow-down", :height => 34, :class => "float-right")%>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="row mt-1">
+  <% if @post.shared_files.count > 0 %>
+    <div class="col-4 card">
+      <a class="card-header ml-0" data-toggle="collapse" href="#attachmentCollapse">Attachments</a>
+      <div class="card-body collapse" id="attachmentCollapse">
+        <ul class="inline">
+          <%#= TODO: Add link to each file %>
+          <li><a href="#">File 1 link</a></li>
+          <li><a href="#">File 2 link</a></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%# Comments  %>
+<div id="comments">
+  <% @post.comments.each do |comment| %>
+    <div class="row mt-1">
+      <div class="card col-12">
+        <div class="card-header">
+          <div class="float-left">
+            <%= octicon "arrow-up" %>
+            <%= octicon "arrow-down" %>
+          </div>
+          <%= render partial: 'shared/user_and_picture', locals: {user: comment.user} %>
+          <span class="text-muted"> 256 points</span>
+          <%= render partial: 'shared/date_ago', locals: {html_class: 'text-muted float-right', date: comment.created_at} %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= comment.content %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
