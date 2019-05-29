@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-8">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -25,19 +24,24 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="profilePosted" role="tabpanel" aria-labelledby="profile-posted-tab">
-        ...
+        <%= render(partial: 'posts/small_post', collection: @user.posts, as: :post) \
+                    || "User has no posts" %>
       </div>
       <div class="tab-pane fade" id="profileShared" role="tabpanel" aria-labelledby="profile-shared-tab">
-        ...
+        <%= render(partial: 'posts/small_post', collection: @user.shared_posts, as: :post) \
+                    || "User hasn't shared any post" %>
       </div>
       <div class="tab-pane fade" id="profileCommented" role="tabpanel" aria-labelledby="profile-commented-tab">
-        ...
+        <%= render(partial: 'posts/small_post', collection: @user.commented_posts, as: :post) \
+                    || "User hasn't commented in any post" %>
       </div>
       <div class="tab-pane fade" id="profileUpvoted" role="tabpanel" aria-labelledby="profile-upvoted-tab">
-        ...
+        <%= render(partial: 'posts/small_post', collection: @user.voted_posts(:up), as: :post) \
+                    || "User hasn't upvoted any posts" %>
       </div>
       <div class="tab-pane fade" id="profileDownvoted" role="tabpanel" aria-labelledby="profile-downvoted-tab">
-        ...
+        <%= render(partial: 'posts/small_post', collection: @user.voted_posts(:down), as: :post) \
+                    || "User hasn't downvoted any posts" %>
       </div>
     </div>
   </div>
@@ -48,7 +52,7 @@
         <img src="<%= Faker::LoremFlickr.image("200x200") %>" class="img-fluid rounded-circle">
       </div>
       <div class="d-inline-block text-primary">
-          <h2><%= Faker::Name.name %></h2>
+        <h2><%= @user.user_profile.name %></h2>
       </div>
       <div class="">
         <button type="button" class="btn btn-success btn-sm">Follow</button>
@@ -56,7 +60,7 @@
       <div>
         <h3 class="h3 text-center">Bio</h3>
         <div class="border border-light">
-          <%= Faker::Lorem.sentence(15) %>
+          <%= @user.user_profile.bio %>
         </div>
       </div>
     </div>

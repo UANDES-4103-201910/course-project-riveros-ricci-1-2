@@ -33,4 +33,22 @@ class User < ApplicationRecord
     self.is_superadmin ||= false
   end
 
+  def commented_posts
+    self.comments.pluck(:post_id).map { |id| Post.find(id) }
+  end
+
+  def voted_posts(type = nil)
+    case type
+    when :up
+      self.votes.where('value > 0').pluck(:post_id).map { |id| Post.find(id) }
+    when :down
+      self.votes.where('value < 0').pluck(:post_id).map { |id| Post.find(id) }
+    else
+      self.votes.pluck(:post_id).map { |id| Post.find(id) }
+    end
+  end
+
+  def shared_posts
+    self.user_shareds.pluck(:post_id).map { |id| Post.find(id) }
+  end
 end
