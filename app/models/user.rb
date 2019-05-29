@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :admin_geofences
   has_one :user_profile
+  alias_attribute :profile, :user_profile
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
