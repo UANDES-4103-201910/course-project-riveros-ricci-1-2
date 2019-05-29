@@ -49,7 +49,11 @@
   <div class="col-4">
     <div class="bg-light rounded text-center">
       <div class="">
-        <img src="<%= Faker::LoremFlickr.image("200x200") %>" class="img-fluid rounded-circle">
+        <% if @user.profile.avatar.attached? %>
+          <%= image_tag url_for(@user.profile.avatar), class: 'img-fluid rounded-circle' %>
+        <% else %>
+          <%= image_tag 'profile-placeholder.gif', class: "img-fluid rounded-circle", alt: "avatar" %>
+        <% end %>
       </div>
       <div class="d-inline-block text-primary">
         <h2><%= @user.user_profile.name %></h2>
