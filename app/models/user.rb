@@ -31,6 +31,7 @@ class User < ApplicationRecord
     self.karma = 0
     self.is_admin ||= false
     self.is_superadmin ||= false
+    UserProfile.create(user: self, name: self.username, bio: "#{self.username}'s bio")
   end
 
   def commented_posts
