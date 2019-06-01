@@ -55,11 +55,12 @@
      - [ ] Change password
    - [ ] Delete admin
 5. User Profile
-   - [ ] View
-   - [ ] Edit
-   - [ ] View posts
+   - [x] View
+   - [x] Edit
+   - [x] View posts
+   - [ ] View logged in user's following posts
 6. Posts
-   - [ ] View
+   - [x] View
      - [ ] Attachments
    - [ ] Delete
    - [ ] Edit
