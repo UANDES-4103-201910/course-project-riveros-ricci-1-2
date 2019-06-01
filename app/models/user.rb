@@ -54,4 +54,8 @@ class User < ApplicationRecord
   def shared_posts
     self.user_shareds.pluck(:post_id).map { |id| Post.find(id) }
   end
+
+  def admin?
+    self.is_admin? || self.is_superadmin?
+  end
 end

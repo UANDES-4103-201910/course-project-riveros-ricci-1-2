@@ -16,7 +16,7 @@
     <% if @current_user.nil? %>
       <%# If no user is logged in, show a simple navbar with a login link  %>
       <%= render 'layouts/no_user_navbar' %>
-    <% elsif @current_user.is_admin?  %>
+    <% elsif @current_user.admin?  %>
       <%# else if logged user is admin, show his navbar  %>
       <%= render 'layouts/admin_navbar' %>
     <% else %>
