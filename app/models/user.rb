@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :admin_geofences
   has_one :user_profile
   alias_attribute :profile, :user_profile
+  accepts_nested_attributes_for :user_profile
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email, presence: true, uniqueness: { case_sensitive: false }

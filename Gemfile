@@ -35,6 +35,8 @@ gem 'devise'
 gem 'will_paginate', '~> 3.1', '>= 3.1.7'
 # Use will_paginate-bootstrap to style will_paginate
 gem 'will_paginate-bootstrap4'
+# Use simple-form to create forms easily
+gem 'simple_form'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
