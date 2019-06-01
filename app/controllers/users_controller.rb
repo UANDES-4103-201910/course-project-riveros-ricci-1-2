@@ -77,9 +77,13 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      if current_user.is_admin?
+      if current_user.is_superadmin?
         params.require(:user)
-              .permit(:username, :email, :password, :is_admin, :is_superadmin,
+            .permit(:username, :email, :password, :is_admin, :is_superadmin,
+                    :user_status_id, :karma, user_profile_attributes: [:id, :name, :bio])
+      elsif current_user.admin?
+        params.require(:user)
+              .permit(:username, :email, :password, :is_admin,
                       :user_status_id, :karma, user_profile_attributes: [:id, :name, :bio])
       else
         params.require(:user).permit(:username, :email, :password, user_profile_attributes: [:id, :name, :bio])
