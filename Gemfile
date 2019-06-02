@@ -37,6 +37,8 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.7'
 gem 'will_paginate-bootstrap4'
 # Use simple-form to create forms easily
 gem 'simple_form'
+# User Redcarpet to parse markdown/html in post's content and comments
+gem 'redcarpet'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

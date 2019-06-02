@@ -20,7 +20,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= @post.description %></h5>
       <div class="card-text">
-        <%= @post.content %>
+        <%= MarkdownParser.new(@post.content).markdown_to_html %>
       </div>
     </div>
     <div class="card-footer">
@@ -55,23 +55,5 @@
 </div>
 <%# Comments  %>
 <div id="comments">
-  <% @post.comments.each do |comment| %>
-    <div class="row mt-1">
-      <div class="card col-12">
-        <div class="card-header">
-          <div class="float-left">
-            <%= octicon "arrow-up" %>
-            <%= octicon "arrow-down" %>
-          </div>
-          <%= render partial: 'shared/user_and_picture', locals: {user: comment.user} %>
-          <span class="text-muted"> 256 points</span>
-          <%= render partial: 'shared/date_ago', locals: {html_class: 'text-muted float-right', date: comment.created_at} %>
-          <%= link_to('Edit', edit_comment_path(comment), class: 'btn btn-warning btn-sm float-right p-0 mr-2') if @current_user == comment.user %>
-        </div>
-        <div class="card-body">
-          <p class="card-text"><%= comment.content %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'comments/comment', collection: @post.comments, as: :comment %>
 </div>

@@ -36,7 +36,9 @@
           <%= post.created_at.strftime("%m/%d/%y") %>
         <% end %>
       </div>
-      <p class="card-text mb-auto"> <%= truncate post.content, length: 250 %> </p>
+      <p class="card-text mb-auto"> <%#= truncate post.content, length: 250 %>
+        <%= MarkdownParser.new(truncate(post.content.lines[0], length: 250)).markdown_to_html %>
+      </p>
     </div>
     <div class="mb-0 mt-2">
       <span class='votes text-primary'><%= post.score %></span>
