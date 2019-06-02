@@ -11,7 +11,7 @@
       <%= link_to('Edit', edit_comment_path(comment), class: 'btn btn-warning btn-sm float-right p-0 mr-2') if @current_user == comment.user %>
     </div>
     <div class="card-body">
-      <p class="card-text"><%= comment.content %></p>
+      <p class="card-text"> <%= MarkdownParser.new(comment.content).markdown_to_html %></p>
     </div>
   </div>
 </div>

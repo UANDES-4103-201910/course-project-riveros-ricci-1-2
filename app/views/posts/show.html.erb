@@ -20,7 +20,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= @post.description %></h5>
       <div class="card-text">
-        <%= @post.content %>
+        <%= MarkdownParser.new(@post.content).markdown_to_html %>
       </div>
     </div>
     <div class="card-footer">
