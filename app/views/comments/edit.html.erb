@@ -1,6 +1,21 @@
-<h1>Editing Comment</h1>
+<div>
+  <h1>Editing Comment</h1>
+  <%= button_to 'Delete', @comment, method: :delete, class: 'btn btn-danger' %>
+</div>
 
-<%= render 'form', comment: @comment %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+<%= simple_form_for @comment do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.association(:user) if @current_user.admin? %>
+
+  <%= f.hidden_field :post_id, value: @comment.post_id %>
+
+  <%= f.input :content, label: 'Comment' %>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
+<% end %>
+
+<%= link_to 'Back', post_path(@comment.post) %>

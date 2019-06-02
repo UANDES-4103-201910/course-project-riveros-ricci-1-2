@@ -35,6 +35,7 @@
       <a href=''>
         <%= octicon("arrow-down", :height => 34, :class => "float-right")%>
       </a>
+      <%= link_to('Add Comment', new_post_comment_path(@post), class: 'btn btn-success btn-sm float-right p-0 mr-2') %>
     </div>
   </div>
 </div>
@@ -65,6 +66,7 @@
           <%= render partial: 'shared/user_and_picture', locals: {user: comment.user} %>
           <span class="text-muted"> 256 points</span>
           <%= render partial: 'shared/date_ago', locals: {html_class: 'text-muted float-right', date: comment.created_at} %>
+          <%= link_to('Edit', edit_comment_path(comment), class: 'btn btn-warning btn-sm float-right p-0 mr-2') if @current_user == comment.user %>
         </div>
         <div class="card-body">
           <p class="card-text"><%= comment.content %></p>
