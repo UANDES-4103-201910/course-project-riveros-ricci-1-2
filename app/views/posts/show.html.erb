@@ -4,6 +4,13 @@
     <div class="card-header">
       <%= render partial: 'shared/user_and_picture', locals: {user: @post.user} %>
       <%= render partial: 'shared/date_ago', locals: {html_class: 'text-muted float-right', date: @post.created_at} %>
+      <%= link_to('Edit', edit_post_path(@post), class: 'btn btn-warning btn-sm float-right p-0 mr-2') if @current_user == @post.user %>
+      <%= link_to(octicon("report"), '#', class: 'btn btn-danger btn-sm float-right p-0 mr-2') if @current_user %>
+      <% if @current_user && @current_user.follow_posts.include?(@post) %>
+        <%= link_to 'Unfollow', '#', class: 'btn btn-warning btn-sm float-right p-0 mr-2' %>
+      <% elsif @current_user && @current_user != @post.user %>
+        <%= link_to 'Follow', '#', class: 'btn btn-success btn-sm float-right p-0 mr-2' %>
+      <% end %>
     </div>
     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
       <title>Placeholder</title>

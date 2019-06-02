@@ -12,10 +12,17 @@
           <%= octicon "kebab-horizontal" %>
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <% if @current_user == post.user || @current_user.admin? %>
+            <%= link_to 'Edit', edit_post_path(post), class: 'dropdown-item' %>
+            <%= link_to 'Delete', edit_post_path(post), class: 'dropdown-item' %>
+          <% end %>
           <%# TODO: put images (flag) and corresponding text  %>
           <a class="dropdown-item" href="#">Flag</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <% if @current_user && @current_user.follow_posts.include?(post) %>
+            <%= link_to 'Unfollow', '#', class: 'dropdown-item' %>
+          <% elsif @current_user && @current_user != post.user %>
+            <%= link_to 'Follow', '#', class: 'dropdown-item' %>
+          <% end %>
         </div>
       </div>
     </div>
