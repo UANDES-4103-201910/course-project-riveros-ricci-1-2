@@ -12,17 +12,8 @@
   </head>
 
   <body>
-  <%= render 'shared/alert_dismissible' %>
-    <% if @current_user.nil? %>
-      <%# If no user is logged in, show a simple navbar with a login link  %>
-      <%= render 'layouts/no_user_navbar' %>
-    <% elsif @current_user.admin?  %>
-      <%# else if logged user is admin, show his navbar  %>
-      <%= render 'layouts/admin_navbar' %>
-    <% else %>
-      <%# else if logged user is normal, show his navbar  %>
-      <%= render 'layouts/user_navbar' %>
-    <% end %>
+    <%= render 'shared/alert_dismissible' %>
+    <%= render 'layouts/navbar' %>
 
     <div class="container">
       <%= yield %>
