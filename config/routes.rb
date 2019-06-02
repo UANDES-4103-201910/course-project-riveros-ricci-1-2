@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :post_flags
   resources :admin_geofences
   resources :user_profiles
+  get 'profile', to: 'users#show'
   resources :follow_users
   resources :dumpsters
   resources :blacklists
