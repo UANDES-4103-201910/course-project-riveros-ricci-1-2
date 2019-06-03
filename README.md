@@ -11,6 +11,7 @@
 2. `bundler install`
 3. `yarn install`
 4. `rails db:migrate db:seed`
+5. Optional: Seed with dummys: `rails db:seed:dummy`
 ...
 
 ## How to run
