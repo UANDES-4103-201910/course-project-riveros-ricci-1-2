@@ -71,7 +71,7 @@
 7. Comments
    - [x] Add
    - [x] Edit
-   - [ ] Tag user in comment
+   - [x] Tag user in comment
    - [x] View author profile
 8. User Search
    - [ ] By nickname
