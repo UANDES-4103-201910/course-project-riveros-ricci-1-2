@@ -11,6 +11,7 @@
 2. `bundler install`
 3. `yarn install`
 4. `rails db:migrate db:seed`
+5. Optional: Seed with dummys: `rails db:seed:dummy`
 ...
 
 ## How to run
@@ -19,13 +20,16 @@
 2. Visit [localhost:5000](http://localhost:5000)
 
 ## Views
+You can navigate through the site to all views.
+
+Here are some:
 - [Landing page](http://localhost:5000/)
 - [Post and comments](http://localhost:5000/post)
 - [User profile](http://localhost:5000/users/1)
-- [User signup](http://localhost:5000/signup)
-- [User login](http://localhost:5000/login)
-- [Admin's blacklist](http://localhost:5000/admin/blacklist)
-- [Admin's dumpster](http://localhost:5000/admin/dumpster)
+- [User signup](http://localhost:5000/users/sign_in)
+- [User login](http://localhost:5000/users/sign_out)
+- [Admin's blacklist](http://localhost:5000/admin/blacklists)
+- [Admin's dumpster](http://localhost:5000/admin/dumpsters)
 
 ## APIs
 - [Postman collection](https://www.getpostman.com/collections/3a88a40eeb2030b53cd8)
@@ -38,19 +42,19 @@
    - [x] Log out
 2. Registration
    - [x] User registration
-   - [ ] Change password
+   - [x] Change password
    - [ ] Password recovery
 3. User Administration
    - [ ] New user
-   - [ ] View User details
-     - [ ] Last access
-     - [ ] User role
-   - [ ] Edit user
+   - [x] View User details
+     - [x] Last access
+     - [X] User role
+   - [x] Edit user
      - [ ] Change password
    - [ ] Delete user
 4. System Administration
-   - [ ] New admin
-   - [ ] View admin details
+   - [x] New admin
+   - [x] View admin details
    - [ ] Edit admin
      - [ ] Change password
    - [ ] Delete admin
