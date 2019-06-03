@@ -38,19 +38,19 @@
    - [x] Log out
 2. Registration
    - [x] User registration
-   - [ ] Change password
+   - [x] Change password
    - [ ] Password recovery
 3. User Administration
    - [ ] New user
-   - [ ] View User details
-     - [ ] Last access
-     - [ ] User role
-   - [ ] Edit user
+   - [x] View User details
+     - [x] Last access
+     - [X] User role
+   - [x] Edit user
      - [ ] Change password
    - [ ] Delete user
 4. System Administration
-   - [ ] New admin
-   - [ ] View admin details
+   - [x] New admin
+   - [x] View admin details
    - [ ] Edit admin
      - [ ] Change password
    - [ ] Delete admin
