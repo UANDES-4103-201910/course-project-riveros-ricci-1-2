@@ -4,7 +4,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    # TODO: How to do this the rails way?
     @users = User.all
+    case params[:filter]
+    when 'non_admin'
+      @users = @users.where('is_admin == 0')
+    when 'admins'
+      @users = @users.where.not('is_admin == 0')
+    else
+      @users
+    end
   end
 
   # GET /users/1

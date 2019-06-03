@@ -1,7 +1,4 @@
 class AdminController < ApplicationController
-  def page
-  end
-
-  def blacklist
+  def index
   end
 end

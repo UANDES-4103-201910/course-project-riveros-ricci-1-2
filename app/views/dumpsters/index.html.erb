@@ -1,4 +1,2 @@
 <h1>Dumpster</h1>
-<% 5.times do |x| %>
-  <%= render 'posts/small_post' %>
-<% end %>
+<%= render partial: 'posts/small_post', collection: @dumpsters.pluck(:post_id), as: :post %>

@@ -1,0 +1,14 @@
+<div class="col-sm-4 py-2">
+  <div class="card h-100 border-primary">
+    <div class="card-body">
+      <h3 class="card-title"> <%= link_to user.username, user_path(user) %> </h3>
+      <%= image_tag avatar_or_placeholder(user), class: 'img-fluid' %>
+      <h6>[<%= user_role_text(user) %>]</h6>
+      <p class="card-text">
+        <div class="d-inline-block">Last login: <%= last_login(user) %></div>
+      </p>
+      <a href="#" class="btn btn-outline-secondary">Outline</a>
+
+    </div>
+  </div>
+</div>

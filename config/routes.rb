@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :admin_geofences, :blacklists, :dumpsters
   end
-  get '/admin', to: 'admin#page'
+  get '/admin', to: 'admin#index'
   # get '/admin/blacklist', to: 'admin#blacklist'
   # get '/admin/dumpster', to: 'dumpsters#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
