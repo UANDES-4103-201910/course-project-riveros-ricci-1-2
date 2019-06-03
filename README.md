@@ -88,3 +88,4 @@ Here are some:
    - Log out is done in a hacky way
 - Posts
    - Can't delete post probably because missing CASCADE
+   - Post view: post width is wrapping content.
