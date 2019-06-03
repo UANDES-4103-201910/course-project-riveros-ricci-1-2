@@ -69,7 +69,7 @@ Here are some:
    - [ ] Delete
    - [x] Edit
    - [ ] Upvote / Downvote
-   - [ ] Follow
+   - [x] Follow
    - [x] View publisher profile
    - [ ] Flag
 7. Comments
