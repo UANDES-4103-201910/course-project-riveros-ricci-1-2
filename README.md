@@ -20,13 +20,16 @@
 2. Visit [localhost:5000](http://localhost:5000)
 
 ## Views
+You can navigate through the site to all views.
+
+Here are some:
 - [Landing page](http://localhost:5000/)
 - [Post and comments](http://localhost:5000/post)
 - [User profile](http://localhost:5000/users/1)
-- [User signup](http://localhost:5000/signup)
-- [User login](http://localhost:5000/login)
-- [Admin's blacklist](http://localhost:5000/admin/blacklist)
-- [Admin's dumpster](http://localhost:5000/admin/dumpster)
+- [User signup](http://localhost:5000/users/sign_in)
+- [User login](http://localhost:5000/users/sign_out)
+- [Admin's blacklist](http://localhost:5000/admin/blacklists)
+- [Admin's dumpster](http://localhost:5000/admin/dumpsters)
 
 ## APIs
 - [Postman collection](https://www.getpostman.com/collections/3a88a40eeb2030b53cd8)
