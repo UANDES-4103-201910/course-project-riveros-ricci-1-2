@@ -45,7 +45,7 @@ Here are some:
    - [x] Change password
    - [ ] Password recovery
 3. User Administration
-   - [ ] New user
+   - [x] New user
    - [x] View User details
      - [x] Last access
      - [X] User role
@@ -80,3 +80,11 @@ Here are some:
 8. User Search
    - [ ] By nickname
    - [ ] By location
+
+## Known bugs / issues
+
+- Users
+   - Creating a user via admin is not allowed by Devise
+   - Log out is done in a hacky way
+- Posts
+   - Can't delete post probably because missing CASCADE
