@@ -296,4 +296,9 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+  # Add the credentials from your Google application to your secrets
+  #client_secret = Rails.application.secrets[:google_secret]
+  # Configure Google omniauth with proper scope
+  config.omniauth :google_oauth2, "360701434639-g98kf7pck619prq8g854eqdpdn4hn1ee.apps.googleusercontent.com",
+                  "65_7JqIGwDfX_u90ekZgm8JR", {}
 end
