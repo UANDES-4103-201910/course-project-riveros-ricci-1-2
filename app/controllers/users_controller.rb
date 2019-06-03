@@ -93,8 +93,10 @@ class UsersController < ApplicationController
         params.require(:user)
               .permit(:username, :email, :password, :is_admin,
                       :user_status_id, :karma, user_profile_attributes: [:id, :name, :bio])
-      else
+      elsif current_user
         params.require(:user).permit(:username, :email, :password, user_profile_attributes: [:id, :name, :bio])
+      else
+        params.require(:user).permit(:username, :email, :password)
       end
     end
 end

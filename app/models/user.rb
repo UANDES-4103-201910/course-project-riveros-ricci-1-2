@@ -27,13 +27,17 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 1 }, format: { with: /\A[a-zA-Z0-9]*\z/i }
 
   before_validation :load_defaults, on: :create
+  after_create :create_profile
 
   def load_defaults
     self.user_status_id ||= 1
     self.karma = 0
     self.is_admin ||= false
     self.is_superadmin ||= false
-    UserProfile.create(user: self, name: self.username, bio: "#{self.username}'s bio")
+  end
+
+  def create_profile
+    self.profile ||= UserProfile.create(user: self, name: self.username, bio: "#{self.username}'s bio")
   end
 
   def commented_posts
