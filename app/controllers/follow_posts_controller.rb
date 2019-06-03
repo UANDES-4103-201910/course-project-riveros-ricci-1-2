@@ -28,7 +28,7 @@ class FollowPostsController < ApplicationController
 
     respond_to do |format|
       if @follow_post.save
-        format.html { redirect_to @follow_post, notice: 'Follow post was successfully created.' }
+        format.html { redirect_to @follow_post.post, notice: 'Follow post was successfully created.' }
         format.json { render :show, status: :created, location: @follow_post }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FollowPostsController < ApplicationController
   def update
     respond_to do |format|
       if @follow_post.update(follow_post_params)
-        format.html { redirect_to @follow_post, notice: 'Follow post was successfully updated.' }
+        format.html { redirect_to @follow_post.post, notice: 'Follow post was successfully updated.' }
         format.json { render :show, status: :ok, location: @follow_post }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class FollowPostsController < ApplicationController
   def destroy
     @follow_post.destroy
     respond_to do |format|
-      format.html { redirect_to follow_posts_url, notice: 'Follow post was successfully destroyed.' }
+      format.html { redirect_to @follow_post.post, notice: 'Follow post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
