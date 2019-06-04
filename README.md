@@ -34,7 +34,7 @@ Here are some:
 ## APIs
 - [Postman collection](https://www.getpostman.com/collections/3a88a40eeb2030b53cd8)
 
-## Assigment 3 TODOs
+## Assigment 4 TODOs
 
 1. System Access
    - [x] Log in with email
@@ -55,17 +55,32 @@ Here are some:
 4. System Administration
    - [x] New admin
    - [x] View admin details
+      - [x] Last access
+      - [ ] Set geofence
    - [ ] Edit admin
      - [ ] Change password
+     - [ ] Modify geofence
+     - [ ] Remove geofence
    - [ ] Delete admin
+   - [ ] Blacklist
+      - [ ] View user blacklist
+      - [ ] Restore user from blacklist
+   - [ ] Dumpster
+      - [ ] View dumpster
+      - [ ] Recover (republish) post
+      - [ ] Search posts
 5. User Profile
    - [x] View
    - [x] Edit
    - [x] View posts
    - [ ] View logged in user's following posts
+   - [x] View user activity (upvoted, downvoted, commented posts)
 6. Posts
    - [x] View
      - [ ] Attachments
+     - [ ] Images
+     - [ ] Location on map
+     - [ ] Up/Down votes
    - [ ] Delete
    - [x] Edit
    - [ ] Upvote / Downvote
@@ -77,9 +92,16 @@ Here are some:
    - [x] Edit
    - [x] Tag user in comment
    - [x] View author profile
-8. User Search
-   - [ ] By nickname
-   - [ ] By location
+8. AUP / TOS
+   - [ ] Provide both docs
+   - [ ] Repost abusive content
+9. Search
+   - [ ] User
+      - [ ] By nickname
+      - [ ] By location
+   - [ ] Post
+      - [ ] By word in title / description
+      - [ ] By author 
 
 ## Known bugs / issues
 
