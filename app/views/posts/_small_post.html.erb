@@ -16,8 +16,7 @@
             <%= link_to 'Edit', edit_post_path(post), class: 'dropdown-item' %>
             <%= link_to 'Delete', edit_post_path(post), class: 'dropdown-item' %>
           <% end %>
-          <%# TODO: put images (flag) and corresponding text  %>
-          <a class="dropdown-item" href="#">Flag</a>
+          <%= link_to 'Flag', new_post_flag_path(post), class: 'dropdown-item' %>
           <% if @current_user && @current_user.follow_posts.include?(post) %>
             <%= link_to 'Unfollow', '#', class: 'dropdown-item' %>
           <% elsif @current_user && @current_user != post.user %>

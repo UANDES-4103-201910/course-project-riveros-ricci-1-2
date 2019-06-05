@@ -72,4 +72,8 @@ class User < ApplicationRecord
   def admin?
     self.is_admin? || self.is_superadmin?
   end
+
+  def flagged_posts
+    self.post_flags.pluck(:post_id).map { |id| Post.find(id) }
+  end
 end

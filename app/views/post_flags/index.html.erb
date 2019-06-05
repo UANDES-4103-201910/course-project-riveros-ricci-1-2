@@ -16,11 +16,11 @@
     <% @post_flags.each do |post_flag| %>
       <tr>
         <td><%= post_flag.post %></td>
-        <td><%= post_flag.flagged_by %></td>
+        <td><%= post_flag.user %></td>
         <td><%= post_flag.comment %></td>
-        <td><%= link_to 'Show', post_flag %></td>
-        <td><%= link_to 'Edit', edit_post_flag_path(post_flag) %></td>
-        <td><%= link_to 'Destroy', post_flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', post_flag_path(post_flag) %></td>
+<!--        <td><%#= link_to 'Edit', edit_post_flag_path(post_flag) %></td>-->
+<!--        <td><%#= link_to 'Destroy', post_flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>

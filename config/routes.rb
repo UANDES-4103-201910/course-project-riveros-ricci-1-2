@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root 'posts#index'
   # get '/post', to: 'welcome#post' # Temporal, in future specify post id
 
-  resources :post_flags
   resources :user_profiles
   get 'profile', to: 'users#show'
   resources :follow_users
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts do
     resources :comments
+    resources :post_flags, as: 'flags'
   end
   resources :users
   get '/signup', to: 'users#new'
