@@ -45,14 +45,8 @@
       <span class='comments text-primary'><%= post.comments.count %></span>
       <span class='text-secondary'>
         <%= link_to 'comments', post_path(post, anchor: 'comments'), class: 'text-secondary' %>
-      </span> 
-      <%# TODO: make this look nice. Comments should have a link to that post comments anchor %>
-      <a href=''>
-        <%= octicon "arrow-up", :height => 24%>
-      </a>
-      <a href=''>
-        <%= octicon("arrow-down", :height => 24, :class => "text-primary")%>
-      </a>
+      </span>
+      <%= render partial: 'votes/up_down_vote', locals: {user: @current_user, post: post} %>
     </div>
 <!--    <a href="#" class="stretched-link">Continue reading</a>-->
   </div>

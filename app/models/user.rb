@@ -65,6 +65,16 @@ class User < ApplicationRecord
     end
   end
 
+  def voted_post_type(post)
+    # Return :up or :down or nil
+    vote = self.votes.where(post: post).pluck(:value)[0]
+    if vote && vote > 0
+      :up
+    elsif vote && vote < 0
+      :down
+    end
+  end
+
   def shared_posts
     self.user_shareds.pluck(:post_id).map { |id| Post.find(id) }
   end

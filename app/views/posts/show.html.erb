@@ -31,12 +31,7 @@
       <span class='text-secondary'>points</span>
       <span class='comments text-primary'><%= @post.comments.count %></span>
       <span class='text-secondary'>comments</span>
-      <a href=''>
-        <%= octicon "arrow-up", :height => 34, :class => 'float-right'%>
-      </a>
-      <a href=''>
-        <%= octicon("arrow-down", :height => 34, :class => "float-right")%>
-      </a>
+      <%= render partial: 'votes/up_down_vote', locals: { user: @current_user, post: @post } %>
       <%= link_to('Add Comment', new_post_comment_path(@post), class: 'btn btn-success btn-sm float-right p-0 mr-2') %>
     </div>
   </div>

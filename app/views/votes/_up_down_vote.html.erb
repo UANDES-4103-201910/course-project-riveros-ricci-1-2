@@ -1,0 +1,28 @@
+<% if user.voted_post_type(post) == :up %>
+  <%= button_to(options = { controller: 'votes', action: 'destroy', id: vote_user_post(user.id, post.id)  },
+                method: :delete, form: { style: 'display: inline;' } , class: 'btn btn-sm') do %>
+    <%= octicon 'arrow-up', height: 24, style: 'fill: orange' %>
+  <% end %>
+  <%= button_to(options = {controller: 'votes', action: 'update', id: vote_user_post(user.id, post.id), vote: { post_id: post.id, user_id: user.id, value: -1 } },
+                method: :put, form: { style: 'display: inline;' }, class: 'btn btn-sm') do %>
+    <%= octicon 'arrow-down', height: 24 %>
+  <% end %>
+<% elsif user.voted_post_type(post) == :down %>
+  <%= button_to(options = {controller: 'votes', action: 'update', id: vote_user_post(user.id, post.id), vote: { post_id: post.id, user_id: user.id, value: 1 } },
+                method: :put, form: { style: 'display: inline;' }, class: 'btn btn-sm') do %>
+    <%= octicon 'arrow-up', height: 24 %>
+  <% end %>
+  <%= button_to(options ={controller: 'votes', action: 'destroy', id: vote_user_post(user.id, post.id) },
+                method: :delete, form: { style: 'display: inline;' }, class: 'btn btn-sm') do %>
+    <%= octicon 'arrow-down', height: 24, style: 'fill: orange' %>
+  <% end %>
+<% else %>
+    <%= button_to(options = {controller: 'votes', action: 'create', vote: { post_id: post.id, user_id: user.id, value: 1 } },
+                  method: :post, form: { style: 'display: inline;' }, class: 'btn btn-sm') do %>
+    <%= octicon 'arrow-up', height: 24 %>
+  <% end %>
+    <%= button_to(options = {controller: 'votes', action: 'create', vote: { post_id: post.id, user_id: user.id, value: -1 } },
+                  method: :post, form: { style: 'display: inline;' }, class: 'btn btn-sm') do %>
+    <%= octicon 'arrow-down', height: 24 %>
+  <% end %>
+<% end %>
