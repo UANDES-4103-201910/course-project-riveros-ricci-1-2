@@ -8,7 +8,7 @@ class Vote < ApplicationRecord
   after_commit :normalize_vote
 
   def normalize_vote
-    self.value = self.value > 0 ? 1 : self.value < 0 ? -1 : 0
+    self.value = self.value > 0 ? 1 : self.value < 0 ? -1 : 0 unless destroyed?
   end
 
 end
