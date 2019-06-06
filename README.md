@@ -83,10 +83,10 @@ Here are some:
      - [ ] Up/Down votes
    - [ ] Delete
    - [x] Edit
-   - [ ] Upvote / Downvote
+   - [x] Upvote / Downvote
    - [x] Follow
    - [x] View publisher profile
-   - [ ] Flag
+   - [x] Flag
 7. Comments
    - [x] Add
    - [x] Edit
