@@ -14,11 +14,7 @@ puts "Created #{normal_users.count} users"
 posts = []
 normal_users.each do |user|
   # Each user will have a profile
-  UserProfile.update(
-    user_id: user.id,
-    name: Faker::Name.name.to_s,
-    bio: Faker::Lorem.sentence(15).to_s
-  )
+
   # Each user will have between 0 and 3 posts
   rand(4).times do |i|
     posts << Post.create(
