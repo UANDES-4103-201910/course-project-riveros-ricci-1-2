@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     @posts = Post.paginate(page: params[:page], per_page: 8)
   end
 
+  def map
+    @posts = Post.all.where('location_latitude IS NOT NULL AND location_longitude IS NOT NULL')
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
