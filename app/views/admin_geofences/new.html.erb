@@ -1,5 +1,68 @@
 <h1>New Admin Geofence</h1>
 
-<%= render 'form', admin_geofence: @admin_geofence %>
+<%= simple_form_for :geofence, url: admin_geofences_path do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :user_id, label: 'Admin'%>
+
+  <%= f.hidden_field :point_array %>
+
+  <div id="mapid" style="height: 400px;"></div>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
+
+<% end %>
 
 <%= link_to 'Back', admin_geofences_path %>
+
+
+
+
+<script>
+    var myIcon = L.icon({
+        iconUrl: '<%= resolve_image_source 'marker-icon.png', nil %>',
+        shadowUrl: '<%= resolve_image_source 'marker-shadow.png', nil %>',
+        iconSize: [25,41],
+        iconAnchor: [12,41],
+        popupAnchor: [0, -41],
+    });
+    var mymap = L.map('mapid').setView([-33.455819, -70.641091], 10);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: '<%= ENV["MAPBOX_TOKEN"] %>'
+    }).addTo(mymap);
+
+    var drawnItems = L.featureGroup().addTo(mymap);
+    mymap.addControl(new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems,
+            edit: false
+        },
+        draw: {
+            polygon : {
+                allowIntersection: false,
+                showArea:true
+            },
+            polyline: false,
+            circle: false,
+            marker: false,
+            circlemarker: false,
+        }
+    }));
+
+    var marker = L.marker([-33.455819, -70.641091], {icon: myIcon}).addTo(mymap);
+    marker.bindPopup("<a href='/'>Post's title1</a><br>Creator");
+
+    mymap.on('draw:created', function (e) {
+        var type = e.layerType,
+            layer = e.layer;
+
+        $('#geofence_point_array').val(layer.getLatLngs());
+
+        drawnItems.addLayer(layer);
+    });
+</script>
