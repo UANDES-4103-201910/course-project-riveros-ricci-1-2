@@ -28,6 +28,9 @@ class PostFlagsController < ApplicationController
 
     respond_to do |format|
       if @post_flag.save
+        if post_flags.where(:post_id => @post_flag.id).count > 1
+          Dumpster.create(creator_id: @post_flag.user_id, post_id: @post_flag.post_id)
+        end
         format.html { redirect_to @post_flag, notice: 'Post flag was successfully created.' }
         format.json { render :show, status: :created, location: @post_flag }
       else

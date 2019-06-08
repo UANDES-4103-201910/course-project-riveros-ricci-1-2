@@ -1,5 +1,20 @@
 <h1>New Post Flag</h1>
 
-<%= render 'form', post_flag: @post_flag %>
+<%#= render 'form', post_flag: @post_flag %>
 
-<%= link_to 'Back', post_flags_path %>
+
+<%= simple_form_for @post_flag do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.association(:user, label_method: :username) %>
+
+  <%= f.association(:post, label_method: :description) %>
+
+  <%= f.input :comment, label: 'Title'%>
+
+  <%= f.button :submit, class: "btn-primary" %>
+
+<% end %>
+
+<%= link_to 'Back', posts_path %>

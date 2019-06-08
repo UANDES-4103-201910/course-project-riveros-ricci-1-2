@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'posts/index'
   root 'posts#index'
   # get '/post', to: 'welcome#post' # Temporal, in future specify post id
-
   resources :post_flags
   resources :user_profiles
   get 'profile', to: 'users#show'
