@@ -5,21 +5,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
   belongs_to :user_status
 
-  has_many :votes
-  has_many :posts
+  has_many :votes, dependent: :destroy
+  has_many :posts, dependent: :destroy
   # The user follows another user is a more complex association
   has_many :active_follow_users, class_name: "FollowUser", foreign_key: "follower_user_id", dependent: :destroy
   has_many :followed_users, through: :active_follow_users
   has_many :passive_follow_users, class_name: "FollowUser", foreign_key: "followed_user_id", dependent: :destroy
   has_many :follower_users, through: :passive_follow_users
-  has_many :follow_posts
-  has_many :user_shareds
-  has_many :shared_files
-  has_many :post_flags
-  has_many :comments
+  has_many :follow_posts, dependent: :destroy
+  has_many :user_shareds, dependent: :destroy
+  has_many :shared_files, dependent: :destroy
+  has_many :post_flags, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :admin_geofences
   has_and_belongs_to_many :geofences
-  has_one :user_profile
+  has_one :user_profile, dependent: :destroy
   alias_attribute :profile, :user_profile
   accepts_nested_attributes_for :user_profile
 

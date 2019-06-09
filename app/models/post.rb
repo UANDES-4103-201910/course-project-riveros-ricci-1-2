@@ -1,12 +1,12 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  has_many :votes
-  has_many :follow_posts
-  has_many :user_shareds
-  has_many :shared_files
-  has_many :post_flags
-  has_many :comments
+  has_many :votes, dependent: :destroy
+  has_many :follow_posts, dependent: :destroy
+  has_many :user_shareds, dependent: :destroy
+  has_many :shared_files, dependent: :destroy
+  has_many :post_flags, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :user_id, presence: true
   validates :description, presence: true
