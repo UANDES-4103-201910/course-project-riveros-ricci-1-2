@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_235324) do
+ActiveRecord::Schema.define(version: 2019_06_09_011809) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -96,6 +96,26 @@ ActiveRecord::Schema.define(version: 2019_06_01_235324) do
     t.index [nil, nil], name: "index_follow_users_on_follower_user_and_followed_user", unique: true
     t.index [nil], name: "index_follow_users_on_followed_user"
     t.index [nil], name: "index_follow_users_on_follower_user"
+  end
+
+  create_table "geofence_vertices", force: :cascade do |t|
+    t.integer "geofence_id"
+    t.decimal "latitude", precision: 8, scale: 6
+    t.decimal "longitude", precision: 9, scale: 6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["geofence_id"], name: "index_geofence_vertices_on_geofence_id"
+  end
+
+  create_table "geofences", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "geofences_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "geofence_id", null: false
   end
 
   create_table "post_flags", force: :cascade do |t|

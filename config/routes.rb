@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/login', to: 'welcome#login' # TODO: to sessions#new
   scope '/admin' do
-    resources :admin_geofences, :blacklists, :dumpsters
+    resources :admin_geofences, :blacklists, :dumpsters, :geofences
   end
   get '/admin', to: 'admin#index'
   # get '/admin/blacklist', to: 'admin#blacklist'
