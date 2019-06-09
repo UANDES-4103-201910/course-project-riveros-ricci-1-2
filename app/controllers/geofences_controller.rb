@@ -58,6 +58,11 @@ class GeofencesController < ApplicationController
   end
 
   def destroy
+    @geofence.destroy
+    respond_to do |format|
+      format.html { redirect_to geofences_path, notice: 'Geofence was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
