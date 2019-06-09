@@ -57,6 +57,8 @@
 
     drawnItems.addLayer(polygon);
 
+    mymap.setView(polygon.getLatLngs()[0][0], 10);
+
     mymap.on('draw:created', function (e) {
         var type = e.layerType,
             layer = e.layer;
