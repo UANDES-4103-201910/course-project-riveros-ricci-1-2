@@ -53,9 +53,6 @@
         }
     }));
 
-    var marker = L.marker([-33.455819, -70.641091], {icon: myIcon}).addTo(mymap);
-    marker.bindPopup("<a href='/'>Post's title1</a><br>Creator");
-
     mymap.on('draw:created', function (e) {
         var type = e.layerType,
             layer = e.layer;

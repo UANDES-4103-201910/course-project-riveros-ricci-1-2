@@ -25,7 +25,7 @@ class GeofencesController < ApplicationController
 
     respond_to do |format|
       if @geofence.save
-        format.html { redirect_to root_path, notice: 'Admin geofence was successfully created.' }
+        format.html { redirect_to geofences_path, notice: 'Geofence was successfully created.' }
         format.json { render :show, status: :created, location: @geofence }
       else
         format.html { render :new }
