@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :post_flags
   has_many :comments
   has_many :admin_geofences
+  has_and_belongs_to_many :geofences
   has_one :user_profile
   alias_attribute :profile, :user_profile
   accepts_nested_attributes_for :user_profile
