@@ -16,9 +16,62 @@
 
   <%# TODO: Location  %>
 
+  <%= f.hidden_field :location_latitude %>
+
+  <%= f.hidden_field :location_longitude %>
+
+  <button class="btn btn-success mb-3" id="addLocationBtn" type="button" data-toggle="collapse" data-target="#collapseLocation" aria-expanded="false" aria-controls="collapseExample">
+    Add location
+  </button>
+  <br>
+  <div class="collapse mb-3" id="collapseLocation">
+    <div id="mapid" style="height: 400px;"></div>
+  </div>
+
   <%= f.button :submit, class: "btn-primary" %>
   <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
 
 <% end %>
 
 <%= link_to 'Back', posts_path %>
+
+<script>
+  var initialized = false;
+  var mymap;
+  var marker;
+
+  $('#addLocationBtn').on('click', function () {
+     if (!initialized) initialize_map();
+     initialized = true;
+  });
+
+  function onMapClick(e) {
+      console.log(e.latlng);
+      marker.setLatLng(e.latlng);
+      $('#post_location_latitude').val(e.latlng.lat);
+      $('#post_location_longitude').val(e.latlng.lng);
+  }
+
+  function initialize_map() {
+      var myIcon = L.icon({
+          iconUrl: '<%= resolve_image_source 'marker-icon.png', nil %>',
+          shadowUrl: '<%= resolve_image_source 'marker-shadow.png', nil %>',
+          iconSize: [25,41],
+          iconAnchor: [12,41],
+          popupAnchor: [0, -41],
+      });
+      mymap = L.map('mapid').setView([-33.455819, -70.641091], 10);
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: 'mapbox.streets',
+          accessToken: '<%= ENV["MAPBOX_TOKEN"] %>'
+      }).addTo(mymap);
+      marker = L.marker([-33.455819, -70.641091], {icon: myIcon}).addTo(mymap);
+      marker.bindPopup("<a href='/'>Post's title1</a><br>Creator");
+      setTimeout(function(){mymap.invalidateSize()}, 300);
+      mymap.on("click", function (e) {onMapClick(e);});
+      var osmGeocoder = new L.Control.OSMGeocoder();
+      mymap.addControl(osmGeocoder);
+  }
+</script>
