@@ -82,6 +82,7 @@ Here are some:
      - [ ] Location on map
      - [ ] Up/Down votes
    - [ ] Delete
+   - [ ] Order by hot/controvertial/top
    - [x] Edit
    - [x] Upvote / Downvote
    - [x] Follow
