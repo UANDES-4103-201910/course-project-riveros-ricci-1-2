@@ -1,4 +1,4 @@
-<h1>test</h1>
+<h1>Post's Map</h1>
 
 <div id="mapid" style="height: 400px;"></div>
 
@@ -11,7 +11,7 @@
         iconAnchor: [12,41],
         popupAnchor: [0, -41],
     });
-    var mymap = L.map('mapid').setView([-33.455819, -70.641091], 10);
+    var mymap = L.map('mapid').setView([0, 0], 2);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
@@ -19,6 +19,6 @@
         accessToken: '<%= ENV["MAPBOX_TOKEN"] %>'
     }).addTo(mymap);
     <%= add_posts_markers(@posts) %>
-    var marker = L.marker([-33.455819, -70.641091], {icon: myIcon}).addTo(mymap);
-    marker.bindPopup("<a href='/'>Post's title1</a><br>Creator");
+    var osmGeocoder = new L.Control.OSMGeocoder();
+    mymap.addControl(osmGeocoder);
 </script>
