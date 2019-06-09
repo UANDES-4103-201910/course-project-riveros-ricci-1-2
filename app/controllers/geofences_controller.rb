@@ -35,6 +35,26 @@ class GeofencesController < ApplicationController
   end
 
   def update
+    @geofence.assign_attributes({ description: params[:geofence][:description] })
+    unless params[:geofence][:points] == ''
+      # TODO: delete old vertices. Maybe in a cleanup task?
+      @geofence.geofence_vertices.replace(build_vertices(params[:geofence][:points]))
+    end
+    @geofence.users.clear
+    params[:geofence][:user_ids].map do |u_id| # assign geofence to selected users
+      u = User.find_by_id(u_id)
+      u.geofences << @geofence unless u.nil?
+    end
+
+    respond_to do |format|
+      if @geofence.save
+        format.html { redirect_to geofences_path, notice: 'Geofence was successfully updated.' }
+        format.json { render :show, status: :ok, location: @geofence }
+      else
+        format.html { render :edit }
+        format.json { render json: @geofence.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

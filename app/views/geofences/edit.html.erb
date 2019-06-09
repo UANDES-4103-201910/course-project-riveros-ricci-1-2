@@ -1,0 +1,68 @@
+<h1>Edit geofence</h1>
+
+<%= simple_form_for @geofence do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :user_ids, collection: User.where(is_admin: true),
+              label_method: :username, input_html: { multiple: true },
+              label: 'Administrators', hint: 'Use ctrl to select/unselect more than one'%>
+
+  <%= f.input :description %>
+
+  <%= f.hidden_field :points %>
+
+  <div id="mapid" class="mb-3" style="height: 400px;"></div>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
+
+<% end %>
+
+<script>
+    var myIcon = L.icon({
+        iconUrl: '<%= resolve_image_source 'marker-icon.png', nil %>',
+        shadowUrl: '<%= resolve_image_source 'marker-shadow.png', nil %>',
+        iconSize: [25,41],
+        iconAnchor: [12,41],
+        popupAnchor: [0, -41],
+    });
+    var mymap = L.map('mapid').setView([-33.455819, -70.641091], 10);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: '<%= ENV["MAPBOX_TOKEN"] %>'
+    }).addTo(mymap);
+
+    var drawnItems = L.featureGroup().addTo(mymap);
+    mymap.addControl(new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems,
+            edit: false
+        },
+        draw: {
+            polygon : {
+                allowIntersection: false,
+                showArea:true
+            },
+            polyline: false,
+            circle: false,
+            marker: false,
+            circlemarker: false,
+        }
+    }));
+
+    var polygon = new L.Polygon(<%= vertices_to_array(@geofence.geofence_vertices) %>);
+
+    drawnItems.addLayer(polygon);
+
+    mymap.on('draw:created', function (e) {
+        var type = e.layerType,
+            layer = e.layer;
+
+        $('#geofence_points').val(layer.getLatLngs());
+
+        drawnItems.addLayer(layer);
+    });
+</script>
