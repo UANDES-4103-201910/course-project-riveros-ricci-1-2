@@ -79,6 +79,7 @@ GEM
     foreman (0.64.0)
       dotenv (~> 0.7.0)
       thor (>= 0.13.6)
+    georuby (2.5.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-api-client (0.13.6)
@@ -272,6 +273,7 @@ DEPENDENCIES
   devise
   faker
   foreman
+  georuby
   google-api-client (~> 0.13.6)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
