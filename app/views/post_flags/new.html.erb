@@ -7,7 +7,7 @@
 
   <%= f.error_notification %>
 
-  <%= f.association(:user, label_method: :username) %>
+  <%= f.association(:user, label_method: :username) if @current_user.is_admin? %>
 
   <%= f.association(:post, label_method: :description) %>
 
