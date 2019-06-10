@@ -34,7 +34,7 @@ Here are some:
 ## APIs
 - [Postman collection](https://www.getpostman.com/collections/3a88a40eeb2030b53cd8)
 
-## Assigment 3 TODOs
+## Assigment 4 TODOs
 
 1. System Access
    - [x] Log in with email
@@ -55,31 +55,54 @@ Here are some:
 4. System Administration
    - [x] New admin
    - [x] View admin details
+      - [x] Last access
+      - [x] Set geofence
    - [ ] Edit admin
      - [ ] Change password
+     - [x] Modify geofence
+     - [x] Remove geofence
    - [ ] Delete admin
+   - [ ] Blacklist
+      - [ ] View user blacklist
+      - [ ] Restore user from blacklist
+   - [ ] Dumpster
+      - [ ] View dumpster
+      - [ ] Recover (republish) post
+      - [ ] Search posts
 5. User Profile
    - [x] View
    - [x] Edit
    - [x] View posts
    - [ ] View logged in user's following posts
+   - [x] View user activity (upvoted, downvoted, commented posts)
 6. Posts
    - [x] View
      - [ ] Attachments
-   - [ ] Delete
+     - [ ] Images
+     - [x] Location on map
+     - [x] Up/Down votes
+   - [x] Delete
+   - [ ] Order by hot/controvertial/top
    - [x] Edit
-   - [ ] Upvote / Downvote
+   - [x] Upvote / Downvote
    - [x] Follow
    - [x] View publisher profile
-   - [ ] Flag
+   - [x] Flag
 7. Comments
    - [x] Add
    - [x] Edit
    - [x] Tag user in comment
    - [x] View author profile
-8. User Search
-   - [ ] By nickname
-   - [ ] By location
+8. AUP / TOS
+   - [ ] Provide both docs
+   - [ ] Repost abusive content
+9. Search
+   - [ ] User
+      - [ ] By nickname
+      - [ ] By location
+   - [ ] Post
+      - [ ] By word in title / description
+      - [ ] By author 
 
 ## Known bugs / issues
 
@@ -87,5 +110,4 @@ Here are some:
    - Creating a user via admin is not allowed by Devise
    - Log out is done in a hacky way
 - Posts
-   - Can't delete post probably because missing CASCADE
    - Post view: post width is wrapping content.

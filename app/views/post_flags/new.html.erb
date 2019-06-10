@@ -1,20 +1,20 @@
 <h1>New Post Flag</h1>
 
-<%#= render 'form', post_flag: @post_flag %>
-
-
 <%= simple_form_for @post_flag do |f| %>
 
   <%= f.error_notification %>
+  <%= errors_for @post_flag, :user_id %>
 
-  <%= f.association(:user, label_method: :username) if @current_user.is_admin? %>
+  <%= f.association(:user) if @current_user.admin? %>
 
-  <%= f.association(:post, label_method: :description) %>
+  <%= f.hidden_field :post_id, value: params[:post_id]  %>
 
-  <%= f.input :comment, label: 'Title'%>
+  <%= f.input :comment, label: 'Comment' %>
 
   <%= f.button :submit, class: "btn-primary" %>
-
+  <%= f.button :button, "Reset", type: "reset", class: "btn-outline-secondary" %>
 <% end %>
 
-<%= link_to 'Back', posts_path %>
+<%= console %>
+
+<%= link_to 'Back', _back_url %>

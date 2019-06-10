@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'posts/index'
   root 'posts#index'
   # get '/post', to: 'welcome#post' # Temporal, in future specify post id
-  resources :post_flags
+
   resources :user_profiles
   get 'profile', to: 'users#show'
   resources :follow_users
@@ -20,12 +20,14 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts do
     resources :comments
+    resources :post_flags, as: 'flags'
   end
+  get '/map', to: 'posts#map'
   resources :users
   get '/signup', to: 'users#new'
   get '/login', to: 'welcome#login' # TODO: to sessions#new
   scope '/admin' do
-    resources :admin_geofences, :blacklists, :dumpsters
+    resources :admin_geofences, :blacklists, :dumpsters, :geofences
   end
   get '/admin', to: 'admin#index'
   # get '/admin/blacklist', to: 'admin#blacklist'

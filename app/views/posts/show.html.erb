@@ -5,7 +5,7 @@
       <%= render partial: 'shared/user_and_picture', locals: {user: @post.user} %>
       <%= render partial: 'shared/date_ago', locals: {html_class: 'text-muted float-right', date: @post.created_at} %>
       <%= link_to('Edit', edit_post_path(@post), class: 'btn btn-warning btn-sm float-right p-0 mr-2') if @current_user == @post.user %>
-      <%= link_to(octicon("report"), '#', class: 'btn btn-danger btn-sm float-right p-0 mr-2') if @current_user %>
+      <%= link_to(octicon("report"), new_post_flag_path(@post), class: 'btn btn-danger btn-sm float-right p-0 mr-2') if @current_user %>
       <% if @current_user && @current_user.follow_posts.where(post: @post).count > 0 %>
         <%= button_to 'Unfollow',  {controller: 'follow_posts', action: 'destroy', id: @current_user.follow_posts.where(post: @post).first },
                       method: :delete, form: { class: 'float-right' }, class: 'btn btn-warning btn-sm p-0 mr-2' %>
@@ -31,12 +31,7 @@
       <span class='text-secondary'>points</span>
       <span class='comments text-primary'><%= @post.comments.count %></span>
       <span class='text-secondary'>comments</span>
-      <a href=''>
-        <%= octicon "arrow-up", :height => 34, :class => 'float-right'%>
-      </a>
-      <a href=''>
-        <%= octicon("arrow-down", :height => 34, :class => "float-right")%>
-      </a>
+      <%= render partial: 'votes/up_down_vote', locals: { user: @current_user, post: @post } %>
       <%= link_to('Add Comment', new_post_comment_path(@post), class: 'btn btn-success btn-sm float-right p-0 mr-2') %>
     </div>
   </div>
@@ -51,6 +46,14 @@
           <li><a href="#">File 1 link</a></li>
           <li><a href="#">File 2 link</a></li>
         </ul>
+      </div>
+    </div>
+  <% end %>
+  <% if @post.location_latitude && @post.location_longitude %>
+    <div class="col-4 card">
+      <a class="card-header ml-0" id="locationCollapseBtn" data-toggle="collapse" href="#locationCollapse">Location</a>
+      <div class="card-body collapse" id="locationCollapse">
+        <%= render partial: 'post_map', locals: {post: @post} %>
       </div>
     </div>
   <% end %>

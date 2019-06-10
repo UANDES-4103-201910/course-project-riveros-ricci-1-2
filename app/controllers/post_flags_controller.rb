@@ -34,7 +34,8 @@ class PostFlagsController < ApplicationController
           Dumpster.create(creator_id: @post_flag.user_id, post_id: @post_flag.post_id)
           format.html { redirect_to @post_flag, notice: 'Pene.' }
         end
-        format.html { redirect_to @post_flag, notice: 'Post flag was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Post flagged successfully created.' }
+
         format.json { render :show, status: :created, location: @post_flag }
       else
         format.html { render :new }
@@ -75,6 +76,10 @@ class PostFlagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_flag_params
-      params.require(:post_flag).permit(:post_id, :flagged_by_id, :comment)
+      if @current_user.admin?
+        params.require(:post_flag).permit(:post_id, :user_id, :comment)
+      else
+        params.require(:post_flag).permit(:post_id, :comment)
+      end
     end
 end

@@ -24,11 +24,13 @@ class AdminGeofencesController < ApplicationController
   # POST /admin_geofences
   # POST /admin_geofences.json
   def create
-    @admin_geofence = AdminGeofence.new(admin_geofence_params)
+    geo = geofence_create(geofence_params)
+    @admin_geofence = AdminGeofence.create(geo)
+    # TODO: do this better
 
     respond_to do |format|
-      if @admin_geofence.save
-        format.html { redirect_to @admin_geofence, notice: 'Admin geofence was successfully created.' }
+      if @admin_geofence
+        format.html { redirect_to root_path, notice: 'Admin geofence was successfully created.' }
         format.json { render :show, status: :created, location: @admin_geofence }
       else
         format.html { render :new }
@@ -68,7 +70,21 @@ class AdminGeofencesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_geofence_params
-      params.require(:admin_geofence).permit(:user_id, :latitude, :longitude)
+    def geofence_params
+      params.require(:geofence).permit(:user_id, :point_array)
+    end
+
+    def geofence_create(geofence)
+      user_id = geofence[:user_id]
+      points_txt = geofence[:point_array]
+      output = []
+      point = Hash.new
+      points_txt.gsub(/LatLng\((-?[0-9]+\.?[0-9]*),\ (-?[0-9]+\.?[0-9]*)\)/) do
+        point[:user_id] = user_id
+        point[:latitude] = $1.to_f
+        point[:longitude] = $2.to_f
+        output << point.clone
+      end
+      output
     end
 end
