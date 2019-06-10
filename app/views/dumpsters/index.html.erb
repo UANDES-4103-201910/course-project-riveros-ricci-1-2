@@ -1,2 +1,4 @@
 <h1>Dumpster</h1>
-<%= render partial: 'posts/small_post', collection: @dumpsters.pluck(:post_id), as: :post %>
+<% @dumpsters.each do |d|  %>
+  <%= render partial: 'posts/small_post', locals: {post: d.post} %>
+<%end  %>

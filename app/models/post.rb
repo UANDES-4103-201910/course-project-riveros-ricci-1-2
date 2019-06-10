@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   has_many :post_flags, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_one :dumpster
+
   validates :user_id, presence: true
   validates :description, presence: true
 

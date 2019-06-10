@@ -22,7 +22,7 @@
 
   <% if @current_user.admin? %>
 
-    <%= f.input :is_admin, label: 'Administrator' %>
+    <%= f.input :is_admin, label: 'Administrator' if @current_user.is_superadmin? %>
 
     <%= f.input(:is_superadmin, label: 'Super Administrator') if @current_user.is_superadmin? %>
 
