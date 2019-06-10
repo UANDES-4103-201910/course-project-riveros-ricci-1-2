@@ -10,15 +10,21 @@ class Ability
 
 
       if user.is_admin?
-        can :manage, Post
-        can :manage, Blacklist
-        can :manage, Dumpster
+
+        if user.is_superadmin?
+          can :manage, :all
+
+        else
+
+          can :manage, Post
+          can :manage, Blacklist
+          can :manage, Dumpster
 
 
-        can :manage, UserProfile do |user_profile|
-           user_profile.user == user
+          can :ud, UserProfile do |user_profile|
+             user_profile.user.admin?
+          end
         end
-
 
 
       elsif user.is_superadmin?
