@@ -65,6 +65,12 @@
           <button type="button" class="btn btn-success btn-sm">Follow</button>
         <% end %>
       </div>
+      <% if can? :manage, Blacklist%>
+        <div class="">
+          <%= link_to "Send user to blacklist", class: 'btn btn-warning btn-sm' %>
+        </div>
+      <% end %>
+
       <div>
         <h3 class="h3 text-center">Bio</h3>
         <div class="border border-light">

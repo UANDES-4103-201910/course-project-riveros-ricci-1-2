@@ -16,7 +16,7 @@
     <% @post_flags.each do |post_flag| %>
       <tr>
         <td><%= post_flag.post %></td>
-        <td><%= post_flag.user %></td>
+        <td><%= post_flag.user_id %></td>
         <td><%= post_flag.comment %></td>
         <td><%= link_to 'Show', post_flag_path(post_flag) %></td>
 <!--        <td><%#= link_to 'Edit', edit_post_flag_path(post_flag) %></td>-->

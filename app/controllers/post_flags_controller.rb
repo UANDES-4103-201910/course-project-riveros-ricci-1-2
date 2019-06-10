@@ -15,6 +15,7 @@ class PostFlagsController < ApplicationController
   # GET /post_flags/new
   def new
     @post_flag = PostFlag.new
+    @post_flag.post_id = params[:post_id]
   end
 
   # GET /post_flags/1/edit
@@ -29,7 +30,12 @@ class PostFlagsController < ApplicationController
 
     respond_to do |format|
       if @post_flag.save
+        if PostFlag.where(:post_id => @post_flag.id).count > 1
+          Dumpster.create(creator_id: @post_flag.user_id, post_id: @post_flag.post_id)
+          format.html { redirect_to @post_flag, notice: 'Pene.' }
+        end
         format.html { redirect_to root_path, notice: 'Post flagged successfully created.' }
+
         format.json { render :show, status: :created, location: @post_flag }
       else
         format.html { render :new }
