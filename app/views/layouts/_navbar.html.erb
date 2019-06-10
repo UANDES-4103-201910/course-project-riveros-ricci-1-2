@@ -20,6 +20,9 @@
           <%= link_to "Top ", { :order => 'top' }, class: "dropdown-item" %>
           <%= link_to "Funny ", '#', class: "dropdown-item" %>
         </div>
+        <li class="nav-item active">
+          <%= link_to "Post's Map", map_path, class: 'nav-link' %>
+        </li>
       <% if @current_user && !@current_user.admin? %>
         <li class="nav-item active">
           <%= link_to "Following", { :filter => 'following' }, class: 'nav-link' %>

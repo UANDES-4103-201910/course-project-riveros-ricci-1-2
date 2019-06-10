@@ -15,7 +15,7 @@
   <tbody>
     <% @admin_geofences.each do |admin_geofence| %>
       <tr>
-        <td><%= admin_geofence.user %></td>
+        <td><%= admin_geofence.user.username %></td>
         <td><%= admin_geofence.latitude %></td>
         <td><%= admin_geofence.longitude %></td>
         <td><%= link_to 'Show', admin_geofence %></td>

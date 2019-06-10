@@ -17,6 +17,12 @@
 
 import "./bootstrap.scss"
 import 'bootstrap/dist/js/bootstrap'
+import 'leaflet/dist/leaflet'
+import 'leaflet-draw/dist/leaflet.draw'
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-draw/dist/leaflet.draw.css'
+import '../geocoder/Control.OSMGeocoder'
+import '../geocoder/Control.OSMGeocoder.css'
 console.log('Hello World from Webpacker');
 
 // To make jquery available

@@ -22,11 +22,12 @@ Rails.application.routes.draw do
     resources :comments
     resources :post_flags, as: 'flags'
   end
+  get '/map', to: 'posts#map'
   resources :users
   get '/signup', to: 'users#new'
   get '/login', to: 'welcome#login' # TODO: to sessions#new
   scope '/admin' do
-    resources :admin_geofences, :blacklists, :dumpsters
+    resources :admin_geofences, :blacklists, :dumpsters, :geofences
   end
   get '/admin', to: 'admin#index'
   # get '/admin/blacklist', to: 'admin#blacklist'

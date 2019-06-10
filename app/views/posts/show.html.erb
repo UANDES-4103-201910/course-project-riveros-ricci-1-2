@@ -49,6 +49,14 @@
       </div>
     </div>
   <% end %>
+  <% if @post.location_latitude && @post.location_longitude %>
+    <div class="col-4 card">
+      <a class="card-header ml-0" id="locationCollapseBtn" data-toggle="collapse" href="#locationCollapse">Location</a>
+      <div class="card-body collapse" id="locationCollapse">
+        <%= render partial: 'post_map', locals: {post: @post} %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <%# Comments  %>
 <div id="comments">
