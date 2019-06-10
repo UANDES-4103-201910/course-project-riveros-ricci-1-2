@@ -56,11 +56,11 @@ Here are some:
    - [x] New admin
    - [x] View admin details
       - [x] Last access
-      - [ ] Set geofence
+      - [x] Set geofence
    - [ ] Edit admin
      - [ ] Change password
-     - [ ] Modify geofence
-     - [ ] Remove geofence
+     - [x] Modify geofence
+     - [x] Remove geofence
    - [ ] Delete admin
    - [ ] Blacklist
       - [ ] View user blacklist
@@ -79,9 +79,9 @@ Here are some:
    - [x] View
      - [ ] Attachments
      - [ ] Images
-     - [ ] Location on map
-     - [ ] Up/Down votes
-   - [ ] Delete
+     - [x] Location on map
+     - [x] Up/Down votes
+   - [x] Delete
    - [ ] Order by hot/controvertial/top
    - [x] Edit
    - [x] Upvote / Downvote
@@ -110,5 +110,4 @@ Here are some:
    - Creating a user via admin is not allowed by Devise
    - Log out is done in a hacky way
 - Posts
-   - Can't delete post probably because missing CASCADE
    - Post view: post width is wrapping content.
