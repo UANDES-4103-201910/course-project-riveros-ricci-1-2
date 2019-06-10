@@ -50,6 +50,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    avatar = params[:user][:user_profile_attributes][:avatar]
+    @user.profile.avatar.attach(avatar) unless avatar.nil?
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

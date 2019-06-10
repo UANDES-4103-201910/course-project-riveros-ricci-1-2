@@ -16,6 +16,8 @@
 
     <%= profile.input :bio %>
 
+    <%= profile.input :avatar, hint: 'Select an image to add or update' %>
+
   <% end %>
 
   <% if @current_user.admin? %>
