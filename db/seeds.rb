@@ -8,5 +8,7 @@
 
 # Minimum to create users
 UserStatus.new(name: 'Active', comment: 'User is active').save
+UserStatus.new(name: 'Blacklisted', comment: 'User is in the blacklist').save
+UserStatus.new(name: 'Banned', comment: 'User is banned from the site').save
 User.new(username: 'Admin', email: 'admin@admin.com', password: '123456',
          is_admin: true, is_superadmin: true, user_status_id: 1, karma: 0).save
