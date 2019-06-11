@@ -33,4 +33,6 @@ Rails.application.routes.draw do
   # get '/admin/blacklist', to: 'admin#blacklist'
   # get '/admin/dumpster', to: 'dumpsters#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/tos', to: 'welcome#tos'
+  get '/aup', to: 'welcome#aup'
 end
