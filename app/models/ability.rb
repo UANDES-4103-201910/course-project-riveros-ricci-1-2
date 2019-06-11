@@ -5,6 +5,7 @@ class Ability
 
   def initialize(user)
     alias_action  :update, :destroy, to: :ud
+    alias_action :create, :read, :update, :destroy, to: :crud
     can :read, Post, public: true
     if user.present?
 
@@ -39,10 +40,20 @@ class Ability
           post.user == user
         end
 
+        can :read, User
+
+        can :crud, Vote, user_id: user.id
+
+        can :crud, Comment, user_id: user.id
+
         can [:create, :read], Post
 
         can :ud, UserProfile do |user_profile|
           user_profile.user == user
+        end
+
+        can :ud, User do |u|
+          u == user
         end
 
       end
