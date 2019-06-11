@@ -30,6 +30,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user ||= @current_user
+    main_picture = params[:post][:main_picture]
+    @post.main_picture.attach(main_picture) unless main_picture.nil?
+    files = params[:post][:files]
+    @post.files.attach(files) unless files.nil?
 
     respond_to do |format|
       if @post.save
