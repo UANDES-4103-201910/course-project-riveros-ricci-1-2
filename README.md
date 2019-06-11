@@ -77,8 +77,8 @@ Here are some:
    - [x] View user activity (upvoted, downvoted, commented posts)
 6. Posts
    - [x] View
-     - [ ] Attachments
-     - [ ] Images
+     - [x] Attachments
+     - [x] Images
      - [x] Location on map
      - [x] Up/Down votes
    - [x] Delete
