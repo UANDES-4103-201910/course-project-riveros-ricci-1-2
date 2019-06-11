@@ -69,6 +69,6 @@ class DumpstersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dumpster_params
-      params.require(:dumpster).permit(:post_id, :creator_id)
+      params.require(:dumpster).permit(:post_id, :user_id)
     end
 end

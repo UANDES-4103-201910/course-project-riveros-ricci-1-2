@@ -6,7 +6,7 @@
 
       <%= f.error_notification %>
 
-      <%= f.association(:creator, label_method: :username, label: 'Creator') %>
+      <%= f.association(:user, label_method: :username, label: 'Creator') %>
 
       <%= f.association(:post, label_method: :description, label: 'Post') %>
 

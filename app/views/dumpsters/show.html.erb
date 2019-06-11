@@ -2,12 +2,12 @@
 
 <p>
   <strong>Post:</strong>
-  <%= @dumpster.post %>
+  <%= @dumpster.post.description %>
 </p>
 
 <p>
   <strong>Creator:</strong>
-  <%= @dumpster.creator %>
+  <%= @dumpster.user.username %>
 </p>
 
 <%= link_to 'Edit', edit_dumpster_path(@dumpster) %> |
