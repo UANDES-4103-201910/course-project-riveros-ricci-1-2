@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
+  devise_scope :user do
+    get '/login', to: 'devise/sessions#new'
+    get '/logout', to: 'devise/sessions#destroy'
+  end
   get 'posts/index'
   root 'posts#index'
   # get '/post', to: 'welcome#post' # Temporal, in future specify post id
@@ -25,7 +29,6 @@ Rails.application.routes.draw do
   get '/map', to: 'posts#map'
   resources :users
   get '/signup', to: 'users#new'
-  get '/login', to: 'welcome#login' # TODO: to sessions#new
   scope '/admin' do
     resources :admin_geofences, :blacklists, :dumpsters, :geofences
   end

@@ -30,9 +30,6 @@ class Ability
 
       elsif user.is_superadmin?
         can :manage, :all
-        cannot :ud, UserProfile do |user_profile|
-          user_profile.user != user
-        end
 
       #normal user
       else
@@ -45,6 +42,10 @@ class Ability
         can :crud, Vote, user_id: user.id
 
         can :crud, Comment, user_id: user.id
+
+        can :crud, PostFlag, user_id: user.id
+
+        can :crud, FollowPost, user_id: user.id
 
         can [:create, :read], Post
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  skip_authorize_resource
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -12,6 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     super do |resource|
       resource.update_attribute(:last_access, DateTime.now)
+      return if resource.user_status_id == 3
     end
   end
 
