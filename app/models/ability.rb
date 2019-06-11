@@ -31,6 +31,7 @@ class Ability
       elsif user.is_superadmin?
         can :manage, :all
 
+
       #normal user
       else
         can :ud, Post do |post|

@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 8)
+    dumpster = Dumpster.pluck(:post_id)
+    dumpster = dumpster.to_s.sub('[', '(').sub(']', ')')
+
+    @posts = Post.where("id NOT IN #{dumpster}")
+    @posts = @posts.paginate(page: params[:page], per_page: 8)
   end
 
   def map
