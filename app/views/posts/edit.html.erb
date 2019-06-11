@@ -13,13 +13,13 @@
 
   <%= f.input :is_open, label: 'Mark post as open?', hint: 'An open post blah...', input_html: { checked: true } %>
 
-  <%# TODO: Location  %>
+  <%= f.input :main_picture, hint: 'Principal image. if you want to add more, you can do so in the body of the post.' %>
 
   <%= f.hidden_field :location_latitude %>
 
   <%= f.hidden_field :location_longitude %>
 
-  <button class="btn btn-success mb-3" id="addLocationBtn" type="button" data-toggle="collapse" data-target="#collapseLocation" aria-expanded="false" aria-controls="collapseExample">
+  <button class="btn btn-success mb-3 mt-3" id="addLocationBtn" type="button" data-toggle="collapse" data-target="#collapseLocation" aria-expanded="false" aria-controls="collapseExample">
     Add location
   </button>
   <br>

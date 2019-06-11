@@ -14,11 +14,10 @@
                       method: :post, form: { class: 'float-right' }, class: 'btn btn-success btn-sm p-0 mr-2' %>
       <% end %>
     </div>
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
-      <title>Placeholder</title>
-      <rect width="100%" height="100%" fill="#868e96"></rect>
-      <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image placeholder</text>
-    </svg>
+    <% if @post.main_picture.attached? %>
+      <%= image_tag @post.main_picture, alt: 'main', class: 'card-img-top img-fluid', style: 'width: 100%; height: 15vw; object-fit: cover;' %>
+    <% end %>
+
     <div class="card-body">
       <h5 class="card-title"><%= @post.description %></h5>
       <div class="card-text">
@@ -37,14 +36,14 @@
   </div>
 </div>
 <div class="row mt-1">
-  <% if @post.shared_files.count > 0 %>
+  <% if @post.files.attached? %>
     <div class="col-4 card">
       <a class="card-header ml-0" data-toggle="collapse" href="#attachmentCollapse">Attachments</a>
       <div class="card-body collapse" id="attachmentCollapse">
         <ul class="inline">
-          <%#= TODO: Add link to each file %>
-          <li><a href="#">File 1 link</a></li>
-          <li><a href="#">File 2 link</a></li>
+          <% @post.files.each do |file| %>
+            <li><%= link_to file.filename().to_s, rails_blob_path(file, disposition: "attachment") %></li>
+        <% end %>
         </ul>
       </div>
     </div>

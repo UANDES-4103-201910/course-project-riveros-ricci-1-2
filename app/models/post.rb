@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   has_one :dumpster
+  has_one_attached :main_picture
+  has_many_attached :files
 
   validates :user_id, presence: true
   validates :description, presence: true
