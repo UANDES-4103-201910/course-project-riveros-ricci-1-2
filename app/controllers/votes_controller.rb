@@ -70,7 +70,7 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      if @current_user.admin?
+      if can? :manage, Vote
         params.require(:vote).permit(:user_id, :post_id, :value)
       else
         params.require(:vote).permit(:post_id, :value)

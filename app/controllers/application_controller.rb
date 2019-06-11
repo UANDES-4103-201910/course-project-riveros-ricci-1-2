@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  load_and_authorize_resource
   protect_from_forgery
   before_action :current_user
   before_action :authenticate_user!
