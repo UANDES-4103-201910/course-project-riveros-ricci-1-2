@@ -26,7 +26,6 @@
             accessToken: '<%= ENV["MAPBOX_TOKEN"] %>'
         }).addTo(mymap);
         marker = L.marker([-33.455819, -70.641091], {icon: myIcon}).addTo(mymap);
-        marker.bindPopup("<a href='/'>Post's title1</a><br>Creator");
         setTimeout(function(){mymap.invalidateSize()}, 300);
 
         marker.setLatLng({lat: <%= post.location_latitude %>, lng: <%= post.location_longitude %>});
