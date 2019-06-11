@@ -44,6 +44,10 @@ class Ability
 
         can :crud, Comment, user_id: user.id
 
+        can :crud, PostFlag, user_id: user.id
+
+        can :crud, FollowPost, user_id: user.id
+
         can [:create, :read], Post
 
         can :ud, UserProfile do |user_profile|
