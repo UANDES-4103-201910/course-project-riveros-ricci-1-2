@@ -7,12 +7,12 @@
 
 <p>
   <strong>Start date:</strong>
-  <%= @blacklist.start_date %>
+  <%= @blacklist.start_date.strftime('%F') %>
 </p>
 
 <p>
   <strong>End date:</strong>
-  <%= @blacklist.end_date %>
+  <%= @blacklist.end_date.strftime('%F') %>
 </p>
 
 <%= link_to 'Edit', edit_blacklist_path(@blacklist) %> |
