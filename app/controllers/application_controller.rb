@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   before_action :current_user
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :configure_permitted_parameters, if: :devise_controller?
   # @current_user = User.find_by_authe
   # puts @current_user.username

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
+  devise_for :users, skip: [:sessions], controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions',
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
   devise_scope :user do
-    get '/login', to: 'devise/sessions#new'
-    get '/logout', to: 'devise/sessions#destroy'
+    get '/login', to: 'devise/sessions#new', as: :new_user_session
+    post '/login', to: 'devise/sessions#create', as: :user_session
+    get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
   get 'posts/index'
   root 'posts#index'
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   get '/map', to: 'posts#map'
   resources :users
-  get '/signup', to: 'users#new'
+  # get '/signup', to: 'users#new'
   scope '/admin' do
     resources :admin_geofences, :blacklists, :dumpsters, :geofences
   end
@@ -38,4 +38,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/tos', to: 'welcome#tos'
   get '/aup', to: 'welcome#aup'
+  post '/new_admin', to: 'users#create_admin', as: :create_admin
+  get '/new_admin', to: 'users#new_admin', as: :new_admin
 end
