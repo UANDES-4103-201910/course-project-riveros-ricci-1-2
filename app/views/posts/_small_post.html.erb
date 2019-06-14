@@ -13,7 +13,7 @@
           <%= octicon "kebab-horizontal" %>
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <% if can? :update, post%>
+          <% if can? :update, post and !post.dumpster%>
             <%= link_to 'Edit', edit_post_path(post), class: 'dropdown-item' %>
             <%= link_to 'Delete', edit_post_path(post), class: 'dropdown-item' %>
           <% end %>
@@ -24,7 +24,8 @@
               <%= button_to 'Dump', {controller: 'dumpsters', action: 'create', dumpster: { post_id: post.id, user_id: @current_user.id} },
                             method: :post, class: 'dropdown-item' if can? :dump, post%>
             <% end %>
-              <% else %>
+          <% elsif !post.dumpster%>
+
             <%= link_to 'Flag', new_post_flag_path(post), class: 'dropdown-item' %>
           <% end %>
           <% if @current_user && @current_user.follow_posts.include?(post) %>
