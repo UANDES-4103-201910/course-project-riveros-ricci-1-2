@@ -86,4 +86,8 @@ class Post < ApplicationRecord
   def epoch_seconds
     self.created_at.to_i - 1134028003
   end
+
+  def anchor
+    "p#{self.id}"
+  end
 end
