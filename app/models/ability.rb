@@ -54,7 +54,11 @@ class Ability
 
         can :crud, FollowPost, user_id: user.id
 
-        can [:create, :read], Post
+        can :read, Post
+
+        can [:create, :update], Post do
+          Blacklist.find_by(user_id: user.id)
+        end
 
         can :ud, UserProfile do |user_profile|
           user_profile.user == user
