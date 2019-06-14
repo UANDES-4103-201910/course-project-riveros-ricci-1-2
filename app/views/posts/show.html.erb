@@ -31,8 +31,12 @@
       <span class='text-secondary'>points</span>
       <span class='comments text-primary'><%= @post.comments.count %></span>
       <span class='text-secondary'>comments</span>
-      <%= render partial: 'votes/up_down_vote', locals: { user: @current_user, post: @post } unless @current_user.nil? %>
-      <%= link_to('Add Comment', new_post_comment_path(@post), class: 'btn btn-success btn-sm float-right p-0 mr-2') if can? :comment, @post%>
+      <% if can? :create, Vote %>
+        <%= render partial: 'votes/up_down_vote', locals: { user: @current_user, post: @post } %>
+      <% end %>
+      <% if can? :create, Comment %>
+        <%= link_to('Add Comment', new_post_comment_path(@post), class: 'btn btn-success btn-sm float-right p-0 mr-2') if can? :comment, @post%>
+      <% end %>
     </div>
   </div>
 </div>

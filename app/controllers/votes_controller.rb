@@ -15,6 +15,7 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
+    authorize! :create, @vote
   end
 
   # GET /votes/1/edit
@@ -24,6 +25,7 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
+    authorize! :create, @vote
     @vote = Vote.new(vote_params)
     @vote.user ||= @current_user
 
@@ -41,6 +43,7 @@ class VotesController < ApplicationController
   # PATCH/PUT /votes/1
   # PATCH/PUT /votes/1.json
   def update
+    authorize! :update, @vote
     respond_to do |format|
       if @vote.update(vote_params)
         format.html { redirect_to @vote.post, notice: 'Vote was successfully updated.' }

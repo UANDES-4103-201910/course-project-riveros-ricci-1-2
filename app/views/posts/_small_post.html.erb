@@ -8,6 +8,7 @@
         <%= image_tag 'profile-placeholder.gif', class: 'rounded float-left img-fluid img-thumbnail mr-1', width: 20, height: 20, alt: 'avatar' %>
       <% end %>
       <%= link_to post.user.username, user_path(post.user) %>
+      <% if can? :create, Comment %>
       <div class="float-right dropdown dropleft">
         <a  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= octicon "kebab-horizontal" %>
@@ -35,6 +36,7 @@
           <% end %>
         </div>
       </div>
+      <% end %>
       <%= render partial: 'shared/open_closed', locals: {post: post, html_class: 'float-right'} %>
     </div>
     <div style="transform: rotate(0);">
@@ -58,7 +60,9 @@
       <span class='text-secondary'>
         <%= link_to 'comments', post_path(post, anchor: 'comments'), class: 'text-secondary' %>
       </span>
-      <%= render partial: 'votes/up_down_vote', locals: {user: @current_user, post: post} unless @current_user.nil? %>
+      <% if can? :create, Comment %>
+        <%= render partial: 'votes/up_down_vote', locals: {user: @current_user, post: post} unless @current_user.nil? %>
+      <% end %>
     </div>
 <!--    <a href="#" class="stretched-link">Continue reading</a>-->
   </div>

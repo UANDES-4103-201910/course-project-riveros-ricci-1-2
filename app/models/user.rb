@@ -87,4 +87,8 @@ class User < ApplicationRecord
   def flagged_posts
     self.post_flags.pluck(:post_id).map { |id| Post.find(id) }
   end
+
+  def blacklisted?
+    Blacklist.find_by(user_id: self.id)
+  end
 end
