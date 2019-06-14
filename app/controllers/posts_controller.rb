@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  require 'will_paginate/array'
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show, :map]
 
@@ -9,6 +10,16 @@ class PostsController < ApplicationController
     dumpster = dumpster.to_s.sub('[', '(').sub(']', ')')
 
     @posts = Post.where("id NOT IN #{dumpster}")
+    case params[:order]
+    when 'recent'
+      @posts = @posts.order(created_at: :desc)
+    when 'controversial'
+      @posts = @posts.sort_by(&:controversy_score).reverse
+    when 'top'
+      @posts = @posts.sort_by(&:score).reverse
+    when 'hot'
+      @posts = @posts.sort_by(&:hot).reverse
+    end
     @posts = @posts.paginate(page: params[:page], per_page: 8)
   end
 

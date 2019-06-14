@@ -37,10 +37,53 @@ class Post < ApplicationRecord
   end
 
   def upvotes
-    votes.select{ |vote| vote.value >= 1 }.count
+    votes.select do |vote|
+      if vote.value
+        vote.value >= 1
+      end
+    end.count
   end
 
   def downvotes
-    votes.select{ |vote| vote.value <= -1 }.count
+    votes.select do |vote|
+      if vote.value
+        vote.value <= -1
+      end
+    end.count
+  end
+
+  def hot
+    (order + sign * epoch_seconds / 45_000).round(7)
+  end
+
+  def controversy_score
+    return 0 if upvotes <= 0 || downvotes <= 0
+    magnitude ** balance
+  end
+
+  def magnitude
+    upvotes + downvotes
+  end
+
+  def order
+    Math.log([1, self.score.abs].max,10)
+  end
+
+  def balance
+    (upvotes > downvotes ) ? downvotes.to_f / upvotes : upvotes.to_f / downvotes
+  end
+
+  def sign_from(score)
+    return 0 if score == 0
+    return 1 if score > 0
+    -1
+  end
+
+  def sign
+    sign_from self.score
+  end
+
+  def epoch_seconds
+    self.created_at.to_i - 1134028003
   end
 end
