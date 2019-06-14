@@ -1,4 +1,5 @@
-<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-2 shadow-sm h-md-250 position-relative">
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-2 shadow-sm h-md-250 position-relative"
+     id="<%= post.anchor %>">
   <div class="col p-4 d-flex flex-column position-static card">
     <div class="d-inline-block mb-2 text-primary">
       <% if post.user.profile.avatar.attached? %>
@@ -8,7 +9,7 @@
       <% end %>
       <%= link_to post.user.username, user_path(post.user) %>
       <% if can? :create, Comment %>
-    <div class="float-right dropdown">
+      <div class="float-right dropdown dropleft">
         <a  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= octicon "kebab-horizontal" %>
         </a>
@@ -19,10 +20,10 @@
           <% end %>
           <% if can? :manage, Dumpster  %>
             <% if post.dumpster %>
-              <%= button_to 'Revive', dumpster_path(post.dumpster), method: :delete, class: 'dropdown-item'%>
+              <%= button_to 'Revive', dumpster_path(post.dumpster), method: :delete, class: 'dropdown-item' if can? :dump, post%>
             <% else %>
               <%= button_to 'Dump', {controller: 'dumpsters', action: 'create', dumpster: { post_id: post.id, user_id: @current_user.id} },
-                            method: :post, class: 'dropdown-item' %>
+                            method: :post, class: 'dropdown-item' if can? :dump, post%>
             <% end %>
           <% elsif !post.dumpster%>
 
@@ -35,7 +36,8 @@
           <% end %>
         </div>
       </div>
-        <% end %>
+      <% end %>
+      <%= render partial: 'shared/open_closed', locals: {post: post, html_class: 'float-right'} %>
     </div>
     <div style="transform: rotate(0);">
       <%= link_to '', post_path(post), class: 'stretched-link' %>
@@ -59,7 +61,7 @@
         <%= link_to 'comments', post_path(post, anchor: 'comments'), class: 'text-secondary' %>
       </span>
       <% if can? :create, Comment %>
-        <%= render partial: 'votes/up_down_vote', locals: {user: @current_user, post: post} %>
+        <%= render partial: 'votes/up_down_vote', locals: {user: @current_user, post: post} unless @current_user.nil? %>
       <% end %>
     </div>
 <!--    <a href="#" class="stretched-link">Continue reading</a>-->

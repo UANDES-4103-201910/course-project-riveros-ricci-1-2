@@ -1,0 +1,5 @@
+<% if post.is_open %>
+  <span class="btn btn-info btn-sm p-0 mr-2 <%= html_class if defined? html_class %>">O</span>
+<% else %>
+  <span class="btn btn-danger btn-sm p-0 mr-2 <%= html_class if defined? html_class %>">C</span>
+<% end %>

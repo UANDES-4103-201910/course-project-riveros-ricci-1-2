@@ -13,6 +13,7 @@ class Geofence < ApplicationRecord
   end
 
   def contains_location?(lat, lng)
+    return false if lat.nil? || lng.nil?
     point = Point.from_x_y(lat, lng)
     build_polygon.contains_point?(point)
   end

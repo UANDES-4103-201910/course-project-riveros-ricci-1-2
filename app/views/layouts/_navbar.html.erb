@@ -14,18 +14,17 @@
           Wall
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Hot ", { :order => 'hot'}, class: "dropdown-item" %>
-          <%= link_to "Controversial ", { :order => 'controversial' }, class: "dropdown-item" %>
-          <%= link_to "Recent ", { :order => 'recent' }, class: "dropdown-item" %>
-          <%= link_to "Top ", { :order => 'top' }, class: "dropdown-item" %>
-          <%= link_to "Funny ", '#', class: "dropdown-item" %>
+          <%= link_to "Hot ", { :order => 'hot', :controller => 'posts'}, class: "dropdown-item" %>
+          <%= link_to "Controversial ", { :order => 'controversial', :controller => 'posts' }, class: "dropdown-item" %>
+          <%= link_to "Recent ", { :order => 'recent', :controller => 'posts' }, class: "dropdown-item" %>
+          <%= link_to "Top ", { :order => 'top', :controller => 'posts' }, class: "dropdown-item" %>
         </div>
         <li class="nav-item active">
           <%= link_to "Post's Map", map_path, class: 'nav-link' %>
         </li>
       <% if @current_user && !@current_user.admin? %>
         <li class="nav-item active">
-          <%= link_to "Following", { :filter => 'following' }, class: 'nav-link' %>
+          <%= link_to "Following", following_path, class: 'nav-link' %>
         </li>
         <li class="nav-item active">
           <%= link_to 'My Profile', profile_path, class: 'nav-link' %>
@@ -52,7 +51,7 @@
         </li>
       <% else %>
         <li class="nav-item active">
-          <%= link_to "Log in", login_path, class: "nav-link" %>
+          <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
           <%= link_to "Signup", user_path('sign_up'), class: "nav-link" %>
