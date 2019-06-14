@@ -1,0 +1,11 @@
+<% if @current_user.user_shareds.pluck('post_id').include?(post.id) %>
+    <%= button_to(options = { controller: 'user_shareds', action: 'destroy', id: shared_user_post(user.id, post.id)  },
+                  method: :delete, form: { style: 'display: inline;' } , class: 'btn btn-sm') do %>
+      <%= octicon 'heart', height: 24, style: 'fill: red' %>
+  <% end %>
+<% else %>
+  <%= button_to(options = {controller: 'user_shareds', action: 'create', user_shared: { post_id: post.id, user_id: user.id } },
+                method: :post, form: { style: 'display: inline;' }, class: 'btn btn-sm') do %>
+    <%= octicon 'heart', height: 24 %>
+  <% end %>
+<% end %>

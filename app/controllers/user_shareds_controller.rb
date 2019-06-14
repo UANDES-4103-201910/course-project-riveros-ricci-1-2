@@ -28,7 +28,7 @@ class UserSharedsController < ApplicationController
 
     respond_to do |format|
       if @user_shared.save
-        format.html { redirect_to @user_shared, notice: 'User shared was successfully created.' }
+        format.html { redirect_to '', notice: 'Post was successfully shared.' }
         format.json { render :show, status: :created, location: @user_shared }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class UserSharedsController < ApplicationController
   def update
     respond_to do |format|
       if @user_shared.update(user_shared_params)
-        format.html { redirect_to @user_shared, notice: 'User shared was successfully updated.' }
+        format.html { redirect_to '', notice: 'Post was successfully shared.' }
         format.json { render :show, status: :ok, location: @user_shared }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class UserSharedsController < ApplicationController
   def destroy
     @user_shared.destroy
     respond_to do |format|
-      format.html { redirect_to user_shareds_url, notice: 'User shared was successfully destroyed.' }
+      format.html { redirect_to '', notice: 'Post was successfully unshared.' }
       format.json { head :no_content }
     end
   end
