@@ -35,7 +35,7 @@ class PostFlag < ApplicationRecord
 
 
     if count >= 2 and count2.size >= 3
-      Blacklist.create!(user: self.post.user)
+      Blacklist.create!(user: self.post.user, start_date: Date.today, end_date: Date.today + 7)
     end
   end
 end

@@ -8,7 +8,7 @@ class Ability
     alias_action :create, :read, :update, :destroy, to: :crud
     alias_action :read, :create, to: :cr
     can :read, Post, public: true
-    if user.present?
+    if user.present? and !user.blacklisted?
 
 
       if user.is_admin?

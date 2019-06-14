@@ -8,12 +8,13 @@
         <%= image_tag 'profile-placeholder.gif', class: 'rounded float-left img-fluid img-thumbnail mr-1', width: 20, height: 20, alt: 'avatar' %>
       <% end %>
       <%= link_to post.user.username, user_path(post.user) %>
+      <% if can? :create, Comment %>
       <div class="float-right dropdown dropleft">
         <a  href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= octicon "kebab-horizontal" %>
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <% if can? :update, post%>
+          <% if can? :update, post and !post.dumpster%>
             <%= link_to 'Edit', edit_post_path(post), class: 'dropdown-item' %>
             <%= link_to 'Delete', edit_post_path(post), class: 'dropdown-item' %>
           <% end %>
@@ -24,7 +25,8 @@
               <%= button_to 'Dump', {controller: 'dumpsters', action: 'create', dumpster: { post_id: post.id, user_id: @current_user.id} },
                             method: :post, class: 'dropdown-item' if can? :dump, post%>
             <% end %>
-              <% else %>
+          <% elsif !post.dumpster%>
+
             <%= link_to 'Flag', new_post_flag_path(post), class: 'dropdown-item' %>
           <% end %>
           <% if @current_user && @current_user.follow_posts.include?(post) %>
@@ -34,6 +36,7 @@
           <% end %>
         </div>
       </div>
+      <% end %>
       <%= render partial: 'shared/open_closed', locals: {post: post, html_class: 'float-right'} %>
       <%= render partial: 'user_shareds/share_post', locals: {post: post, user: @current_user} if @current_user %>
     </div>
@@ -58,7 +61,9 @@
       <span class='text-secondary'>
         <%= link_to 'comments', post_path(post, anchor: 'comments'), class: 'text-secondary' %>
       </span>
-      <%= render partial: 'votes/up_down_vote', locals: {user: @current_user, post: post} unless @current_user.nil? %>
+      <% if can? :create, Comment %>
+        <%= render partial: 'votes/up_down_vote', locals: {user: @current_user, post: post} unless @current_user.nil? %>
+      <% end %>
     </div>
 <!--    <a href="#" class="stretched-link">Continue reading</a>-->
   </div>
