@@ -34,6 +34,7 @@
           <% end %>
         </div>
       </div>
+      <%= render partial: 'shared/open_closed', locals: {post: post, html_class: 'float-right'} %>
     </div>
     <div style="transform: rotate(0);">
       <%= link_to '', post_path(post), class: 'stretched-link' %>

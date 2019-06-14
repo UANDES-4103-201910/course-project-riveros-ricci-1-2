@@ -46,6 +46,8 @@ class Ability
 
         can :crud, Vote, user_id: user.id
 
+        can :comment, Post, &:is_open
+
         can :crud, Comment, user_id: user.id
 
         can :crud, PostFlag, user_id: user.id
