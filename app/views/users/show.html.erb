@@ -67,8 +67,8 @@
       </div>
       <% if can? :manage, Blacklist%>
         <div class="">
-          <%= link_to "Send user to blacklist", class: 'btn btn-warning btn-sm' %>
-        </div>
+          <%= button_to 'Send to Blacklist', {controller: 'blacklists', action: 'create', blacklist: { user_id: @user.id} },
+                        method: :post, class: 'btn btn-warning btn-sm' %>        </div>
       <% end %>
 
       <div>

@@ -15,7 +15,7 @@
   <tbody>
     <% @blacklists.each do |blacklist| %>
       <tr>
-        <td><%= blacklist.user %></td>
+        <td><%= blacklist.user.username %></td>
         <td><%= blacklist.start_date %></td>
         <td><%= blacklist.end_date %></td>
         <td><%= link_to 'Show', blacklist %></td>
