@@ -14,10 +14,10 @@
           Wall
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Hot ", { :order => 'hot', :controller => 'posts'}, class: "dropdown-item" %>
-          <%= link_to "Controversial ", { :order => 'controversial', :controller => 'posts' }, class: "dropdown-item" %>
-          <%= link_to "Recent ", { :order => 'recent', :controller => 'posts' }, class: "dropdown-item" %>
-          <%= link_to "Top ", { :order => 'top', :controller => 'posts' }, class: "dropdown-item" %>
+          <%= link_to "Hot ", posts_path(:order => 'hot'), class: "dropdown-item" %>
+          <%= link_to "Controversial ", posts_path(:order => 'controversial'), class: "dropdown-item" %>
+          <%= link_to "Recent ", posts_path(:order => 'recent'), class: "dropdown-item" %>
+          <%= link_to "Top ", posts_path(:order => 'top'), class: "dropdown-item" %>
         </div>
         <li class="nav-item active">
           <%= link_to "Post's Map", map_path, class: 'nav-link' %>
