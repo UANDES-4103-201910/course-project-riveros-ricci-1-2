@@ -23,6 +23,11 @@ class PostsController < ApplicationController
     @posts = @posts.paginate(page: params[:page], per_page: 8)
   end
 
+  def following
+    @posts = @current_user.follow_posts.map(&:post).paginate(page: params[:page], per_page: 8)
+    render 'index'
+  end
+
   def map
     @posts = Post.all.where('location_latitude IS NOT NULL AND location_longitude IS NOT NULL')
   end

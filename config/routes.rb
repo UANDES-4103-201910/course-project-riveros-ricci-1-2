@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   get '/aup', to: 'welcome#aup'
   post '/new_admin', to: 'users#create_admin', as: :create_admin
   get '/new_admin', to: 'users#new_admin', as: :new_admin
+  get '/following', to: 'posts#following', as: :following
 end
