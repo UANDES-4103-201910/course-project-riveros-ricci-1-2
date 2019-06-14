@@ -4,7 +4,7 @@
     <div class="card-header">
       <%= render partial: 'shared/user_and_picture', locals: {user: @post.user} %>
       <%= render partial: 'shared/date_ago', locals: {html_class: 'text-muted float-right', date: @post.created_at} %>
-      <%= link_to('Edit', edit_post_path(@post), class: 'btn btn-warning btn-sm float-right p-0 mr-2') if @current_user == @post.user %>
+      <%= link_to('Edit', edit_post_path(@post), class: 'btn btn-warning btn-sm float-right p-0 mr-2') if can? :edit, @post %>
       <%= link_to(octicon("report"), new_post_flag_path(@post), class: 'btn btn-danger btn-sm float-right p-0 mr-2') if @current_user %>
       <% if @current_user && @current_user.follow_posts.where(post: @post).count > 0 %>
         <%= button_to 'Unfollow',  {controller: 'follow_posts', action: 'destroy', id: @current_user.follow_posts.where(post: @post).first },

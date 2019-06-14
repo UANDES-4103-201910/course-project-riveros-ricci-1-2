@@ -6,6 +6,7 @@ class Ability
   def initialize(user)
     alias_action  :update, :destroy, to: :ud
     alias_action :create, :read, :update, :destroy, to: :crud
+    alias_action :read, :create, to: :cr
     can :read, Post, public: true
     if user.present?
 
@@ -17,7 +18,10 @@ class Ability
 
         else
 
-          can :manage, Post
+          can [:dump, :ud], Post do |post|
+            inside_geofences?(post, user)
+          end
+          can [:create, :read], Post
           can :manage, Blacklist
           can :manage, Dumpster
 
@@ -88,6 +92,13 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+  end
+
+  def inside_geofences?(post, user)
+    user.geofences.each do |gf|
+      return gf.contains_location?(post.location_latitude, post.location_longitude)
+    end
+    false
   end
 end
 

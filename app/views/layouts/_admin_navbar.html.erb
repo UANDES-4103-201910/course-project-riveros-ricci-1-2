@@ -18,6 +18,9 @@
       <li class="nav-item mr-2">
         <%= link_to 'Dumpster', dumpsters_path, class: 'btn btn-success' %>
       </li>
+      <li class="nav-item mr-2">
+        <%= link_to 'Geofences', geofences_path, class: 'btn btn-success' if can? :manage, Geofence %>
+      </li>
     </ul>
   </div>
 </nav>
